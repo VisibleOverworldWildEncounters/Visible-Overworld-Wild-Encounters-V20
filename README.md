@@ -122,6 +122,7 @@ to replace normal wild encountering during direction changing by overworld/mixed
 
 ### CHANGELOG
 NEW FEATURES FROM VERSION 19.1.0,1 FOR PEv19:
+ - easy install as plugin
  - bug concerning roaming pokemon fixed
  - included an easy way to set the steps a pokemon remains on map before despawning depending on pokemon properties 
  - rearranged features of previous version as add-ons, including
