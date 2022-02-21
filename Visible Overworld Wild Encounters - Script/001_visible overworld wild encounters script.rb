@@ -18,7 +18,8 @@
 #===============================================================================
 #            FEATURES
 #===============================================================================
-
+# FEATURES
+#  [*] Easy Install as Plugin
 #  [*] set steps a pokemon remains on map before despawning depending on pokemon properties 
 #  [*] Choose whether you can battle water pokemon while not surfing or not
 #  [*] In water pokemon won't spawn above other tiles, which made them stuck or walk on ground
