@@ -172,7 +172,7 @@ UPSCALED FEATURES FROM VERSION 2.0.1 FOR PEv17.2:
   - more lag reduction 
   - included automatic spawning of pokemon, i.e. spawning without having to move the player
   - included vendilys rescue chain, i. e. if pokemon of the same species family spawn in a row and will be battled in a row, then you increase the chance of spawning
-    an evolved pokemon of that species family. Link: [url]https://www.pokecommunity.com/showthread.php?t=415524[/url]
+    an evolved pokemon of that species family. Link: https://www.pokecommunity.com/showthread.php?t=415524
   - removed bug occuring after fainting against wild overworld encounter
   - for script-developers, shortened the spawnPokeEvent method for better readablitiy
   - removed bugs from version 1.9
