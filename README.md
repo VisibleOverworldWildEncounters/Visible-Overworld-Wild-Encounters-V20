@@ -65,7 +65,6 @@ Installation as simple as it can be.
 
 
 ### THE BUG FIX FOR ONCHANGEDIRECTION
-[SPOILER]
 In Pokemon Essentials V18.1, it was introduced that normal wild encounter can encounter on turning the direction of your player.
 These encounters are normal encounters by default. This behaviour remains in Pokemon Essentials V18 and V19.1.
 The visible overworld wild encounter script simply clears everything on change of direction of the player.
@@ -74,7 +73,6 @@ But if not, then you have to place all these scripts below the visible overworld
 Or you will have to use this fix:
 
 Open the script editor and go to the visible overworld wild encounter script. Search for the following code snippet
-[SPOILER]
 ```
           #########################################################
           #                                                       #
@@ -96,7 +94,6 @@ Events.onChangeDirection += proc {
   pbBattleOrSpawnOnStepTaken($PokemonGlobal.repel > 0) if !$game_temp.in_menu
 }
 ```
-[/SPOILER]
 and remove it. Then go to the script folder "/Data/Scripts/012_Overworld" and open "001_Overworld.rb" in your editor. Search for the following code snippet
 ```
 # Start wild encounters while turning on the spot
@@ -108,16 +105,13 @@ Events.onChangeDirection += proc {
 and 
 - either remove that code (to remove that pokemon can encounter on changing the direction of your player), or
 - replace it by this code snippet 
-[SPOILER]
 ```
 # Start wild overworld/mixed encounters while turning on the spot
 Events.onChangeDirection += proc {
   pbBattleOrSpawnOnStepTaken($PokemonGlobal.repel > 0) if !$game_temp.in_menu
 }
 ```
-[/SPOILER]
 to replace normal wild encountering during direction changing by overworld/mixed encountering (prefered).
-[/SPOILER]
 
 ### ADD-ONS AND ADDITIONAL RESOURCES FOR THIS SCRIPT:
 
