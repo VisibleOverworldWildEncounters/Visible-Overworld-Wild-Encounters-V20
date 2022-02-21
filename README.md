@@ -114,5 +114,81 @@ Events.onChangeDirection += proc {
 ```
 to replace normal wild encountering during direction changing by overworld/mixed encountering (prefered).
 
-### ADD-ONS AND ADDITIONAL RESOURCES FOR THIS SCRIPT:
+### CHANGELOG
+NEW FEATURES FROM VERSION 19.1.0,1 FOR PEv19:
+ - bug concerning roaming pokemon fixed
+ - included an easy way to set the steps a pokemon remains on map before despawning depending on pokemon properties 
+ - rearranged features of previous version as add-ons, including
+    - trigger different appear animations depending on encounter type, shinyness
+    - shiny animation while PokeEvent is visible on screen
+    - stop more pokemon from spawning with the MAX_SPAWN parameter
+    - choose wether remove distanced spawned pokemon or not with REMOVE_DISTANCED parameter
+    - choose wether remove by time chronometer or not with REMOVE_PROLONGED
+    - added to add your own overworld encounter chance with VISIBLE_ENCOUNTER_PROBABILITY
+
+NEW FEATURES FROM VERSION 19.0.10 FOR PEv19:
+ - fixed water pokemon spawning in platform above water tile
+ - water pokemon won't appear in the border
+ - choose wether battling water pokemon from ground or not with BATTLE_WATER_ON_GROUND parameter
+ - stop more pokemon from spawning with the MAX_SPAWN parameter
+ - choose wether remove distanced spawned pokemon or not with REMOVE_DISTANCED parameter
+ - shiny animation while PokeEvent is visible on screen
+ - choose wether remove by time chronometer or not with REMOVE_PROLONGED
+ - added to add your own overworld encounter chance with VISIBLE_ENCOUNTER_PROBABILITY
+
+NEW FEATURES FROM VERSION 19.0.9 FOR PEv19:
+ - updated script to work with PEv19.1
+ - used $PokemonTemp.encounterType to trigger different appear animations
+ - added alternative stepcount before vanishining for shiny pokemon
+
+NEW FEATURES FROM VERSION 18.0.8 FOR PEv18:
+ - tiny bug fix for $PokemonTemp.encounterType
+
+NEW FEATURES FROM VERSION 18.0.7 FOR PEv18:
+ - removed a bug concerning changing the standard form when goining into battle
+
+NEW FEATURES FROM VERSION 18.0.6 FOR PEv18:
+  - (hopefully) removed a rare crash concerning character_sprites
+
+NEW FEATURES FROM VERSION 2.0.5 FOR PEv18:
+  - removed bug that makes all water encounter vanish
+
+NEW FEATURES FROM VERSION 2.0.4 FOR PEv18:
+  - encounters dont spawn on impassable tiles in caves
+
+NEW FEATURES FROM VERSION 2.0.3 FOR PEv18:
+  - poke radar works as usual
+
+NEW FEATURES FROM VERSION 2.0.2 FOR PEv18:
+  - added new global variable $PokemonGlobal.creatingSpawningPokemon to check during the event @@OnWildPokemonCreate if the pokemon is created for spawning on the map or created for a different reason
+
+UPSCALED FEATURES FROM VERSION 2.0.1 FOR PEv17.2:
+  - less lag
+  - supports sprites for alternative forms of pokemon
+  - supports sprites for female/male/genderless pokemon
+  - bug fixes for roaming encounter and double battles
+  - more options in settings
+  - roaming encounters working correctly
+  - more lag reduction 
+  - included automatic spawning of pokemon, i.e. spawning without having to move the player
+  - included vendilys rescue chain, i. e. if pokemon of the same species family spawn in a row and will be battled in a row, then you increase the chance of spawning
+    an evolved pokemon of that species family. Link: [url]https://www.pokecommunity.com/showthread.php?t=415524[/url]
+  - removed bug occuring after fainting against wild overworld encounter
+  - for script-developers, shortened the spawnPokeEvent method for better readablitiy
+  - removed bugs from version 1.9
+  - added shapes of overworld encounter for rescue chain users
+  - supports spawning of alternate forms while chaining
+  - if overworld sprites for alternative, female or shiny forms are missing,
+    then the standard sprite will be displayed instead of an invisible event
+  - bug fix for shiny encounters
+  - respecting shiny state for normal encounters when using overworld and normal encounters at the same time
+  - easier chaining concerning Vendilys Rescue chain, i.e. no more resetting of the chain when spawning of a pokemon of different family but when fighting with a pokemon of different family
+  - Added new Event @@OnPokemonCreateForSpawning which only triggers on spawning
+  - Added new global variable $PokemonGlobal.battlingSpawnedShiny to check if an active battle is against a spawned pokemon.
+  - removed bug to make the new features in version 1.11 work
+  - reorganised and thin out the code to organise code as add-ons
+  - removed Vendilys Rescue Chain, Let's Go Shiny Hunting and automatic spawning as hard coded feature and provide it as Add-Ons instead
+  - Now, using overworld and normal encounters at the same time is a standard feature
+  - autospawning will not trigger instant battles anymore
+  - removed a bug that came from reorganising the code in original code and add-ons concerning Let's go shiny hunting add-on
 
