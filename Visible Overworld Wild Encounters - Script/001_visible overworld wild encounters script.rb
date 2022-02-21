@@ -36,6 +36,7 @@
 #  [*] Additional Animations Add-On
 #    [*] manage different appear animations of overworld spawning encounters depending on encounter type and pokemon properties
 #    [*] Play animations while PokeEvent is visible on screen, such as a shiny animation
+#    [*] See also the animations by TrankerGolD for aggressive encounters, water encounters, and shiny encounters https://www.pokecommunity.com/showpost.php?p=10395100&postcount=383
 #  [*] Different Spawn And Normal Encounters (like in Pokemon Sword/Shield) Add-On
 #    [*] Introduces Overworld Encounter Types you can set in your encounters.txt PBS-file.
 #    [*] This allows you to define different encounters for overworld spawning and instant battling on the same map.
@@ -56,7 +57,9 @@
 #  [*] Remove Poke Events on load/save/transfer Add-On
 #    [*] Remove overworld encounters on load/save and on map transfer
 #  [*] Overworld Lavender Town Ghosts Add-On
-#    [*] Shows ghost sprite for overworld encounters, needs Lavender Town Ghosts Plugin 
+#    [*] Shows ghost sprite for overworld encounters
+#    [*] requires Lavender Town Ghosts Plugin 
+#    [*] You need to put a graphic, named "ghost.png", in your "/Graphisc/Characters/" folder of your project. This graphic is not provided here, but maybe you can easily find some resource, for example search for "shiny missingNo [Ghost Form]".
 
 
 #===============================================================================
@@ -64,7 +67,7 @@
 #===============================================================================
 
 # Installation as simple as it can be.
-# [1] Add Graphics: Either get the resources from Gen 8 Project [url]https://reliccastle.com/resources/670/[/url]
+# [1] Add Graphics: Either get the resources from Gen 8 Project https://reliccastle.com/resources/670/
 #  and install the "Graphics/Characters" folder in your game file system.
 #  Or you place your own sprites for your pokemon/fakemon with the right names in your "\Graphics\Characters\Follower" folder and your shiny sprites in your "\Graphics\Characters\Follower shiny" folder. 
 #  The right name of sprites is:
@@ -72,12 +75,12 @@
 #    alternate form - SPECIES_n.png where n is the number of the form (e.g. PIKACHU_3.png)
 #    female form    - SPECIES_female.png or SPECIES_n_female (e.g. PIDGEY_female.png or PIKACHU_3_female.png)
 # [2] Add Script: Copy the folder "Visible Overworld Wild Encounters - Script" in your "/plugins/" folder.
-# [3] Install Add-Ons (from the other folders): There are a lot of Add-Ons and parameter settings for your personal optimal solution. So, install Add-Ons and edit parameters in settings to your liking.
-#  Some Add-On and parameter combinations can produce lag, e.g. a high spawning rate without a spawning cap, or e.g. "NO_OF_CHOSEN_TILES=0" (or too high) when having other scripts like Pokemon Following.
-# [4] If you use any other script that triggers on change of direction of the player, then either 
-#     [*] these scripts have to be below this visible overworld wild encounter script, or
-#     [*] you have to use the bug fix for OnChangeDirection (See below).
-# [5] Enjoy!
+# [3] Change Settings: Open the script file in the folder and change the parameters in the settings section therein as you like. Details descriptions about the parameters can be found there as well. 
+# [4] Install Add-Ons (the other folders): There are a lot of Add-Ons and parameter settings for your personal optimal solution. So, Copy Add-Ons in your "/plugins/" folder and edit parameters in settings of that Add-Ons to your liking. Some Add-On and parameter combinations can produce lag, e.g. a high spawning rate without a spawning cap, or e.g. "NO_OF_CHOSEN_TILES=0" (or too high) when having other scripts like Pokemon Following.
+# [5] If you use any other script that triggers on change of direction of the player, then either 
+#     [*] these scripts have to be loaded after this visible overworld wild encounter script, or
+#     [*] you have to use the bug fix for OnChangeDirection ( See https://github.com/VisibleOverworldWildEncounters/Visible-Overworld-Wild-Encounters/ ).
+# [6] Enjoy!
 
 
 #===============================================================================
