@@ -49,7 +49,7 @@ As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters 
 
 ### INSTALLATION
 Installation as simple as it can be.
-1. Add Graphics: Either get the resources from Gen 8 Project [url]https://reliccastle.com/resources/670/[/url]
+1. Add Graphics: Either get the resources from Gen 8 Project (https://reliccastle.com/resources/670/)
   and install the "Graphics/Characters" folder in your game file system.
   Or you place your own sprites for your pokemon/fakemon with the right names in your "\Graphics\Characters\Follower" folder and your shiny sprites in your "\Graphics\Characters\Follower shiny" folder. 
   The right name of sprites is:
