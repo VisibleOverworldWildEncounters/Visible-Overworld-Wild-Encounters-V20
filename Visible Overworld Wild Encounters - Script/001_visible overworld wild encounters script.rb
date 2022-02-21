@@ -18,7 +18,7 @@
 #===============================================================================
 #            FEATURES
 #===============================================================================
-# FEATURES
+# NEW FEATURES
 #  [*] Easy Install as Plugin
 #  [*] set steps a pokemon remains on map before despawning depending on pokemon properties 
 #  [*] Choose whether you can battle water pokemon while not surfing or not
@@ -75,7 +75,7 @@
 #    usual form     - SPECIES.png   where SPECIES is the species name in capslock (e.g. PIDGEY.png)
 #    alternate form - SPECIES_n.png where n is the number of the form (e.g. PIKACHU_3.png)
 #    female form    - SPECIES_female.png or SPECIES_n_female (e.g. PIDGEY_female.png or PIKACHU_3_female.png)
-# [2] Add Script: Copy the folder "Visible Overworld Wild Encounters - Script" in your "/plugins/" folder.
+# [2] Add Script: Follow this link https://github.com/VisibleOverworldWildEncounters/Visible-Overworld-Wild-Encounters and copy the folder "Visible Overworld Wild Encounters - Script" to your "/plugins/" folder.
 # [3] Change Settings: Open the script file in the folder and change the parameters in the settings section therein as you like. Details descriptions about the parameters can be found there as well. 
 # [4] Install Add-Ons (the other folders): There are a lot of Add-Ons and parameter settings for your personal optimal solution. So, Copy Add-Ons in your "/plugins/" folder and edit parameters in settings of that Add-Ons to your liking. Some Add-On and parameter combinations can produce lag, e.g. a high spawning rate without a spawning cap, or e.g. "NO_OF_CHOSEN_TILES=0" (or too high) when having other scripts like Pokemon Following.
 # [5] If you use any other script that triggers on change of direction of the player, then either 
