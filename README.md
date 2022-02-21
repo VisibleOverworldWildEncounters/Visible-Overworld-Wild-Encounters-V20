@@ -75,7 +75,7 @@ In Pokemon Essentials V18.1, it was introduced that normal wild encounter can en
 These encounters are normal encounters by default. This behaviour remains in Pokemon Essentials V18 and V19.1.
 The visible overworld wild encounter script simply clears everything on change of direction of the player.
 This works perfectly well, if you don't want to use any other script that triggers on change direction in your game.
-But if not, then you have to place all these scripts below the visible overworld wild encounter script (so the clearing will not effect these scripts).
+But if not, then you have to place all these scripts needs to be loaded after the visible overworld wild encounters script (so the clearing will not effect these scripts).
 Or you will have to use this fix:
 
 Open the script editor and go to the visible overworld wild encounter script. Search for the following code snippet
