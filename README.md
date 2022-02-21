@@ -7,7 +7,7 @@ UPDATED TO VERSION 19.1.0.1 FOR POKEMON ESSENTIALS V19.1. This script is for Pok
 As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters pop up on the overworld, they move around and you can start the battle with them simply by moving to the pokemon. Clearly, you also can omit the battle by circling around them.
 
 
-### FEATURES
+### NEW FEATURES
 - Easy Install as Plugin
 - Set movement of overworld pokemon depending on its properties
 - set steps a pokemon remains on map before despawning depending on pokemon properties 
