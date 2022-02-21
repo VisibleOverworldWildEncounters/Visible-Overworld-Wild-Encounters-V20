@@ -11,7 +11,7 @@
 
 # INSTALLATION:
 # 1) Get or create an overworld sprite for your overworld ghost encounter. This plugin will not provide a sprite but maybe you find can easily find some resource, for example search for "shiny missingNo [Ghost Form]".
-# 2) Name that graphic "ghost.png" and place it in your "/Graphisc/Characters/" folder of your project.
+# 2) Name that graphic "ghost.png" and place it in your "/Graphics/Characters/" folder of your project.
 # 3) Download and install the "Lavender Town Ghosts" Plugin.
 # 4) Download and install the "Visible Overworld Wild Encounters" Plugin.
 # 5) Download and install this plugin.
