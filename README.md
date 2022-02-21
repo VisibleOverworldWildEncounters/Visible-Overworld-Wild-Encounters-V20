@@ -57,11 +57,12 @@ Installation as simple as it can be.
     alternate form - SPECIES_n.png where n is the number of the form (e.g. PIKACHU_3.png)
     female form    - SPECIES_female.png or SPECIES_n_female (e.g. PIDGEY_female.png or PIKACHU_3_female.png)
 2. Add Script: Copy the folder "Visible Overworld Wild Encounters - Script" in your "/plugins/" folder.
-3. Install Add-Ons (from below): There are a lot of Add-Ons and parameter settings for your personal optimal solution. So, install Add-Ons and edit parameters in settings to your liking. Some Add-On and parameter combinations can produce lag, e.g. a high spawning rate without a spawning cap, or e.g. "NO_OF_CHOSEN_TILES=0" (or too high) when having other scripts like Pokemon Following.
-4. If you use any other script that triggers on change of direction of the player, then either 
+3. Change Settings: Open the script file in the folder and change the parameters in the settings section therein as you like. Details descriptions about the parameters can be found there as well. 
+4. Install Add-Ons (from below): There are a lot of Add-Ons and parameter settings for your personal optimal solution. So, install Add-Ons and edit parameters in settings of that add-ons to your liking. Some Add-On and parameter combinations can produce lag, e.g. a high spawning rate without a spawning cap, or e.g. "NO_OF_CHOSEN_TILES=0" (or too high) when having other scripts like Pokemon Following.
+5. If you use any other script that triggers on change of direction of the player, then either 
    - these scripts have to be below this visible overworld wild encounter script, or
    - you have to use the bug fix for OnChangeDirection (See below).
-5. Enjoy!
+6. Enjoy!
 
 
 ### THE BUG FIX FOR ONCHANGEDIRECTION
