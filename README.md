@@ -25,6 +25,8 @@ As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters 
 - Additional Animations Add-On
   - manage different appear animations of overworld spawning encounters depending on encounter type and pokemon properties
   - Play animations while PokeEvent is visible on screen, such as a shiny animation
+  - See also the animations by TrankerGolD for aggressive encounters, water encounters, and shiny encounters https://www.pokecommunity.com/showpost.php?p=10395100&postcount=383
+
 - Different Spawn And Normal Encounters (like in Pokemon Sword/Shield) Add-On
   - Introduces Overworld Encounter Types you can set in your encounters.txt PBS-file.
   - This allows you to define different encounters for overworld spawning and instant battling on the same map.
