@@ -1,6 +1,6 @@
 # Visible-Overworld-Wild-Encounters
 
-* Visible Overworld Wild Encounters Version 19.1.0.1 for PEv19.1 - by derFischae (Credits if used please) *
+* Visible Overworld Wild Encounters Version 19.1.0.1 for PEv19.1 - by derFischae (Credits if used please)
 
 UPDATED TO VERSION 19.1.0.1 FOR POKEMON ESSENTIALS V19.1. This script is for Pokémon Essentials v19 and v19.1 (for short PEv19).
 
@@ -22,79 +22,49 @@ As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters 
 - You can check during the event @@OnWildPokemonCreate if the pokemon is created for spawning on the map or created for a different reason with the Global variable $PokemonGlobal.creatingSpawningPokemon
 - If you want to add a procedure that modifies a pokemon only for spawning but not before battling then you can use the Event @@OnWildPokemonCreateForSpawning.
 ### ADDITIONAL FEATURES BY ADD-ONS:
-[list]
-  [*] Additional Animations Add-On
-  [list]
-    [*] manage different appear animations of overworld spawning encounters depending on encounter type and pokemon properties
-    [*] Play animations while PokeEvent is visible on screen, such as a shiny animation
-  [/list]
-  [*] Different Spawn And Normal Encounters (like in Pokemon Sword/Shield) Add-On
-  [list]
-    [*] Introduces Overworld Encounter Types you can set in your encounters.txt PBS-file.
-    [*] This allows you to define different encounters for overworld spawning and instant battling on the same map.
-  [/list]
-  [*] Max Spawn Add-On
-  [list]
-    [*] Define a maximal limit of spawned pokemon on the overworld at the same time.
-    [*] After reaching that limit MAX_SPAWN no pokemon will spawn until another pokemon despawned.
-  [/list]
-  [*] Additional Despawn Methods Add-On
-  [list]
-    [*] Choose to remove PokeEvent distanced on screen from the player with REMOVE_DISTANCED
-    [*] The distance (steps) is edited in DISTANCE_VANISH and DISTANCE_VANISH_SHINY
-    [*] Remove by time chronometer with REMOVE_PROLONGED
-    [*] Use your own overworld spawn chance in VISIBLE_ENCOUNTER_PROBABILITY
-  [/list]
-  [*] Fixed Spawn Probability Add-On
-  [list]
-    [*] Define your own overworld spawn chance in Percentage
-    [*] Spawn chance becomes independent from the default PEv19.1 encounter chance calculator
-  [/list]
-  [*] Variable Spawn/Normal Encounter Proportion During Game  
-  [list]
-    [*] You can change the percentage between overworld spawning and normal encounters in story driven events during playthrough
-    [*] in Percentage, from only normal encounters to only spawning encounters
-  [/list]
-  [*] Remove Poke Events on load/save/transfer Add-On
-  [list]
-    [*] Remove overworld encounters on load/save and on map transfer
-  [/list]
-  [*] Overworld Lavender Town Ghosts Add-On
-  [list]
-    [*] Shows ghost sprite for overworld encounters, needs Lavender Town Ghosts Plugin 
-  [/list]
-[/list]
+- Additional Animations Add-On
+  - manage different appear animations of overworld spawning encounters depending on encounter type and pokemon properties
+  - Play animations while PokeEvent is visible on screen, such as a shiny animation
+- Different Spawn And Normal Encounters (like in Pokemon Sword/Shield) Add-On
+  - Introduces Overworld Encounter Types you can set in your encounters.txt PBS-file.
+  - This allows you to define different encounters for overworld spawning and instant battling on the same map.
+- Max Spawn Add-On
+  - Define a maximal limit of spawned pokemon on the overworld at the same time.
+  - After reaching that limit MAX_SPAWN no pokemon will spawn until another pokemon despawned.
+- Additional Despawn Methods Add-On
+  - Choose to remove PokeEvent distanced on screen from the player with REMOVE_DISTANCED
+  - The distance (steps) is edited in DISTANCE_VANISH and DISTANCE_VANISH_SHINY
+  - Remove by time chronometer with REMOVE_PROLONGED
+  - Use your own overworld spawn chance in VISIBLE_ENCOUNTER_PROBABILITY
+- Fixed Spawn Probability Add-On
+  - Define your own overworld spawn chance in Percentage
+  - Spawn chance becomes independent from the default PEv19.1 encounter chance calculator
+- Variable Spawn/Normal Encounter Proportion During Game  
+  - You can change the percentage between overworld spawning and normal encounters in story driven events during playthrough
+  - in Percentage, from only normal encounters to only spawning encounters
+- Remove Poke Events on load/save/transfer Add-On
+  - Remove overworld encounters on load/save and on map transfer
+- Overworld Lavender Town Ghosts Add-On
+  - Shows ghost sprite for overworld encounters, needs Lavender Town Ghosts Plugin 
 
-[b] INSTALLATION [/b]
+### INSTALLATION
 Installation as simple as it can be.
-[list=1]
-  [*] Add Graphics: Either get the resources from Gen 8 Project [url]https://reliccastle.com/resources/670/[/url]
+1. Add Graphics: Either get the resources from Gen 8 Project [url]https://reliccastle.com/resources/670/[/url]
   and install the "Graphics/Characters" folder in your game file system.
-  Or you see in the following spoiler section
-  [spoiler]
-  Place your own sprites for your pokemon/fakemon with the right names in your "\Graphics\Characters\Follower" folder and your shiny sprites in your "\Graphics\Characters\Follower shiny" folder. 
+  Or you place your own sprites for your pokemon/fakemon with the right names in your "\Graphics\Characters\Follower" folder and your shiny sprites in your "\Graphics\Characters\Follower shiny" folder. 
   The right name of sprites is:
     usual form     - SPECIES.png   where SPECIES is the species name in capslock (e.g. PIDGEY.png)
     alternate form - SPECIES_n.png where n is the number of the form (e.g. PIKACHU_3.png)
     female form    - SPECIES_female.png or SPECIES_n_female (e.g. PIDGEY_female.png or PIKACHU_3_female.png)
-  [/spoiler]
-  [*] Add Script: Copy the folder "Visible Overworld Wild Encounters - Script" in your "/plugins/" folder.
-  [*] Install Add-Ons (from below): There are a lot of Add-Ons and parameter settings for your personal optimal solution. So, install Add-Ons and edit parameters in settings to your liking.
-  Some Add-On and parameter combinations can produce lag, e.g. a high spawning rate without a spawning cap, or e.g. "NO_OF_CHOSEN_TILES=0" (or too high) when having other scripts like Pokemon Following.
-  [*] If you use any other script that triggers on change of direction of the player, then either 
-  [list]
-     [*] these scripts have to be below this visible overworld wild encounter script, or
-     [*] you have to use the bug fix for OnChangeDirection (See below).
-  [/list]
-  [*] Enjoy!
+2. Add Script: Copy the folder "Visible Overworld Wild Encounters - Script" in your "/plugins/" folder.
+3. Install Add-Ons (from below): There are a lot of Add-Ons and parameter settings for your personal optimal solution. So, install Add-Ons and edit parameters in settings to your liking. Some Add-On and parameter combinations can produce lag, e.g. a high spawning rate without a spawning cap, or e.g. "NO_OF_CHOSEN_TILES=0" (or too high) when having other scripts like Pokemon Following.
+4. If you use any other script that triggers on change of direction of the player, then either 
+   - these scripts have to be below this visible overworld wild encounter script, or
+   - you have to use the bug fix for OnChangeDirection (See below).
+5. Enjoy!
 
-[b] HERE IS THE CODE OF THE VISIBLE OVERWORLD WILD ENCOUNTER SCRIPT [/b]
-[spoiler]
-[code]
-[/code]
-[/spoiler]
 
-[b] THE BUG FIX FOR ONCHANGEDIRECTION [/b]
+### THE BUG FIX FOR ONCHANGEDIRECTION
 [SPOILER]
 In Pokemon Essentials V18.1, it was introduced that normal wild encounter can encounter on turning the direction of your player.
 These encounters are normal encounters by default. This behaviour remains in Pokemon Essentials V18 and V19.1.
@@ -105,7 +75,7 @@ Or you will have to use this fix:
 
 Open the script editor and go to the visible overworld wild encounter script. Search for the following code snippet
 [SPOILER]
-[CODE]
+```
           #########################################################
           #                                                       #
           #      0. PART: BUG FIX FOR ONCHANGEDIRECTION           #
@@ -125,31 +95,29 @@ Events.onChangeDirection.clear
 Events.onChangeDirection += proc {
   pbBattleOrSpawnOnStepTaken($PokemonGlobal.repel > 0) if !$game_temp.in_menu
 }
-[/CODE]
+```
 [/SPOILER]
 and remove it. Then go to the script folder "/Data/Scripts/012_Overworld" and open "001_Overworld.rb" in your editor. Search for the following code snippet
-[CODE]
+```
 # Start wild encounters while turning on the spot
 Events.onChangeDirection += proc {
   repel_active = ($PokemonGlobal.repel > 0)
   pbBattleOnStepTaken(repel_active) if !$game_temp.in_menu
 }
-[/CODE]
+```
 and 
-[list]
-[*] either remove that code (to remove that pokemon can encounter on changing the direction of your player), or
-[*] replace it by this code snippet 
+- either remove that code (to remove that pokemon can encounter on changing the direction of your player), or
+- replace it by this code snippet 
 [SPOILER]
-[CODE]
+```
 # Start wild overworld/mixed encounters while turning on the spot
 Events.onChangeDirection += proc {
   pbBattleOrSpawnOnStepTaken($PokemonGlobal.repel > 0) if !$game_temp.in_menu
 }
-[/CODE]
+```
 [/SPOILER]
 to replace normal wild encountering during direction changing by overworld/mixed encountering (prefered).
-[/list]
 [/SPOILER]
 
-[b] ADD-ONS AND ADDITIONAL RESOURCES FOR THIS SCRIPT:[/b]
-[list]
+### ADD-ONS AND ADDITIONAL RESOURCES FOR THIS SCRIPT:
+
