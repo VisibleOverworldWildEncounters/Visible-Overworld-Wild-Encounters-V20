@@ -1,31 +1,27 @@
 # Visible-Overworld-Wild-Encounters
 
-[b] * Visible Overworld Wild Encounters Version 19.1.0.1 for PEv19.1 - by derFischae (Credits if used please) * [/b]
+* Visible Overworld Wild Encounters Version 19.1.0.1 for PEv19.1 - by derFischae (Credits if used please) *
 
 UPDATED TO VERSION 19.1.0.1 FOR POKEMON ESSENTIALS V19.1. This script is for Pokémon Essentials v19 and v19.1 (for short PEv19).
 
 As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters pop up on the overworld, they move around and you can start the battle with them simply by moving to the pokemon. Clearly, you also can omit the battle by circling around them.
 
 
-[b] FEATURES [/b]
-[list]
-  [*] set steps a pokemon remains on map before despawning depending on pokemon properties 
-  [*] Choose whether you can battle water pokemon while not surfing or not
-  [*] In water pokemon won't spawn above other tiles, which made them stuck or walk on ground
-[/list]
-UPSCALED FEATURES INCLUDED from PEv18:
-[list]
-  [*] see the pokemon on the overworld before going into battle
-  [*] no forced battling against overworld encounters
-  [*] plays the pokemon cry while spawning
-  [*] Choose whether encounters occure on all terrains or only on the terrain of the player
-  [*] you can have instant wild battle and overworld spawning at the same time and set the propability of that by default and change it ingame and store it with a $game_variable
-  [*] In caves, pokemon don't spawn on impassable Rock-Tiles, which have the Tile-ID 4 
-  [*] You can check during the events @@OnWildPokemonCreate, @@OnStartBattle, ... if you are battling a spawned pokemon with the global variable $PokemonGlobal.battlingSpawnedPokemon
-  [*] You can check during the event @@OnWildPokemonCreate if the pokemon is created for spawning on the map or created for a different reason with the Global variable $PokemonGlobal.creatingSpawningPokemon
-  [*] If you want to add a procedure that modifies a pokemon only for spawning but not before battling then you can use the Event @@OnWildPokemonCreateForSpawning.
-[/list]
-ADDITIONAL FEATURES BY ADD-ONS:
+### FEATURES
+- set steps a pokemon remains on map before despawning depending on pokemon properties 
+- Choose whether you can battle water pokemon while not surfing or not
+- In water pokemon won't spawn above other tiles, which made them stuck or walk on ground
+### UPSCALED FEATURES INCLUDED from PEv18:
+- see the pokemon on the overworld before going into battle
+- no forced battling against overworld encounters
+- plays the pokemon cry while spawning
+- Choose whether encounters occure on all terrains or only on the terrain of the player
+- you can have instant wild battle and overworld spawning at the same time and set the propability of that by default and change it ingame and store it with a $game_variable
+- In caves, pokemon don't spawn on impassable Rock-Tiles, which have the Tile-ID 4 
+- You can check during the events @@OnWildPokemonCreate, @@OnStartBattle, ... if you are battling a spawned pokemon with the global variable $PokemonGlobal.battlingSpawnedPokemon
+- You can check during the event @@OnWildPokemonCreate if the pokemon is created for spawning on the map or created for a different reason with the Global variable $PokemonGlobal.creatingSpawningPokemon
+- If you want to add a procedure that modifies a pokemon only for spawning but not before battling then you can use the Event @@OnWildPokemonCreateForSpawning.
+### ADDITIONAL FEATURES BY ADD-ONS:
 [list]
   [*] Additional Animations Add-On
   [list]
