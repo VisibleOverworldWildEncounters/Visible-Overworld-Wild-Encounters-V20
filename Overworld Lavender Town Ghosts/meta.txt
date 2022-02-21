@@ -1,0 +1,6 @@
+Name         = Overworld Lavender Town Ghosts
+Version      = 1.0
+Requires     = Visible Overworld Wild Encounters,19.1.0.1
+Requires     = Lavender Town Ghosts
+Link         = https://www.pokecommunity.com/showthread.php?t=429019              
+Credits      = derFischae
