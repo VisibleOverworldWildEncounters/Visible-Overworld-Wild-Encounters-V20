@@ -65,7 +65,7 @@ Installation as simple as it can be.
 3. Change Settings: Open the script file in the folder and change the parameters in the settings section therein as you like. Details descriptions about the parameters can be found there as well. 
 4. Install Add-Ons (the other folders): There are a lot of Add-Ons and parameter settings for your personal optimal solution. So, Copy Add-Ons in your "/plugins/" folder and edit parameters in settings of that Add-Ons to your liking. Some Add-On and parameter combinations can produce lag, e.g. a high spawning rate without a spawning cap, or e.g. "NO_OF_CHOSEN_TILES=0" (or too high) when having other scripts like Pokemon Following.
 5. If you use any other script that triggers on change of direction of the player, then either 
-   - these scripts have to be below this visible overworld wild encounter script, or
+   - these scripts have to be loaded after this visible overworld wild encounter script, or
    - you have to use the bug fix for OnChangeDirection (See below).
 6. Enjoy!
 
