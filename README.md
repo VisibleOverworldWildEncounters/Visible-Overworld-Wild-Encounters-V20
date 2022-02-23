@@ -101,9 +101,9 @@ Events.onChangeDirection.clear
 Events.onChangeDirection += proc {
   next if $game_temp.in_menu
   if pbBattleOrSpawnOnStepTaken($PokemonGlobal.repel > 0) 
-    pbBattleOnStepTaken(repel_active) # STANDARD WILD BATTLE
+    pbBattleOnStepTaken($PokemonGlobal.repel > 0) # STANDARD WILD BATTLE
   else
-    pbSpawnOnStepTaken(repel_active)  # OVERWORLD ENCOUNTERS
+    pbSpawnOnStepTaken($PokemonGlobal.repel > 0)  # OVERWORLD ENCOUNTERS
   end
 }
 ```
@@ -123,7 +123,8 @@ and
 # Start wild mixed overworld/normal encounters while turning on the spot
 Events.onChangeDirection += proc {
   next if !$game_temp.in_menu
-  if pbBattleOrSpawnOnStepTaken($PokemonGlobal.repel > 0) 
+  repel_active = ($PokemonGlobal.repel > 0)
+  if pbBattleOrSpawnOnStepTaken(repel_active) 
     pbBattleOnStepTaken(repel_active) # STANDARD WILD BATTLE
   else
     pbSpawnOnStepTaken(repel_active)  # OVERWORLD ENCOUNTERS
@@ -135,7 +136,8 @@ Events.onChangeDirection += proc {
 # Start purely overworld encounters while turning on the spot
 Events.onChangeDirection += proc {
   next if !$game_temp.in_menu
-  pbSpawnOnStepTaken(repel_active) if !pbBattleOrSpawnOnStepTaken($PokemonGlobal.repel > 0) 
+  repel_active = ($PokemonGlobal.repel > 0)
+  pbSpawnOnStepTaken(repel_active) if !pbBattleOrSpawnOnStepTaken(repel_active) 
 }
 ```
 
