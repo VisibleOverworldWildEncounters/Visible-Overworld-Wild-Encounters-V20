@@ -43,9 +43,9 @@ As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters 
 - Fixed Spawn Probability Add-On
   - Define your own overworld spawn chance in Percentage
   - Spawn chance becomes independent from the default PEv19.1 encounter chance calculator
-- Variable Spawn/Normal Encounter Proportion During Game  
-  - You can change the percentage between overworld spawning and normal encounters in story driven events during playthrough
-  - in Percentage, from only normal encounters to only spawning encounters
+- Variable Spawn/Normal Encounter Proportion During Game Add-On
+  - Adds automatical spawning after time beside the default spawning while moving the player
+  - Set the time period of automatic spawning
 - Remove Poke Events on load/save/transfer Add-On
   - Remove overworld encounters on load/save and on map transfer
 - Overworld Lavender Town Ghosts Add-On
