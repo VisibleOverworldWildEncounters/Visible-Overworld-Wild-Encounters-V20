@@ -111,8 +111,8 @@ Events.onChangeDirection += proc {
 }
 ```
 and 
-- either remove that code (to remove that pokemon can encounter on changing the direction of your player), or
-- replace it by this code snippet 
+- either remove that code (to remove that pokemon can encounter on changing the direction of your player)
+- or replace it by the following code snippet (to replace normal wild encountering during direction changing by mixed overworld/instant encountering, prefered)
 ```
 # Start wild mixed overworld/normal encounters while turning on the spot
 Events.onChangeDirection += proc {
@@ -124,8 +124,7 @@ Events.onChangeDirection += proc {
   end
 }
 ```
-to replace normal wild encountering during direction changing by mixed overworld/instant encountering (prefered), or
-- replace it by this code snippet 
+- or replace it by this following code snippet (to replace normal wild encountering during direction changing by purely overworld encountering).
 ```
 # Start purely overworld encounters while turning on the spot
 Events.onChangeDirection += proc {
@@ -133,7 +132,6 @@ Events.onChangeDirection += proc {
   pbSpawnOnStepTaken(repel_active) if !pbBattleOrSpawnOnStepTaken($PokemonGlobal.repel > 0) 
 }
 ```
-to replace normal wild encountering during direction changing by purely overworld encountering.
 
 ### CHANGELOG
 NEW FEATURES FROM VERSION 19.1.0,1 FOR PEv19:
