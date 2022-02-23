@@ -55,6 +55,9 @@
 #  [*] Variable Spawn/Normal Encounter Proportion During Game  
 #    [*] You can change the percentage between overworld spawning and normal encounters in story driven events during playthrough
 #    [*] in Percentage, from only normal encounters to only spawning encounters
+#  [*] Automatic Spawning Add-On
+#    [*] Choose whether pokemon spawn automatically or only while moving the player
+#    [*] Set the speed of automatic spawning
 #  [*] Remove Poke Events on load/save/transfer Add-On
 #    [*] Remove overworld encounters on load/save and on map transfer
 #  [*] Overworld Lavender Town Ghosts Add-On
@@ -302,8 +305,9 @@ Events.onChangeDirection += proc {
     pbSpawnOnStepTaken(repel_active)  # OVERWORLD ENCOUNTERS
   end
 }
+}
 
-	
+
           #########################################################
           #                                                       #
           #      1. PART: SPAWNING THE OVERWORLD ENCOUNTER        #
