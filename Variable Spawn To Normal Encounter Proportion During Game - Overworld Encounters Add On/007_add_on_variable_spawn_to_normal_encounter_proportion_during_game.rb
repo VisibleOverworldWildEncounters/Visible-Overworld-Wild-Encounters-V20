@@ -88,9 +88,9 @@ end
 def pbBattleOrSpawnOnStepTaken(repel_active)
   setInstantChance if getInstantChance == 0
   if (rand(100) < getInstantChance) || pbPokeRadarOnShakingGrass
-    pbBattleOnStepTaken(repel_active) # STANDARD WILD BATTLE
+    return true # STANDARD WILD BATTLE
   else
-    pbSpawnOnStepTaken(repel_active)  # OVERWORLD ENCOUNTERS
+    return false  # OVERWORLD ENCOUNTERS
   end
 end
   
