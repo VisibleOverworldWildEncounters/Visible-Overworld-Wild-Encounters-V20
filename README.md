@@ -51,7 +51,7 @@ As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters 
 - Overworld Lavender Town Ghosts Add-On
   - Shows ghost sprite for overworld encounters
   - requires Lavender Town Ghosts Plugin 
-  - You need to put a graphic, named "ghost.png", in your "/Graphisc/Characters/" folder of your project. This graphic is not provided here, but maybe you can easily find some resource, for example search for "shiny missingNo [Ghost Form]".
+  - You need to put a graphic, named "ghost.png", in your "/Graphics/Characters/" folder of your project. This graphic is not provided here, but maybe you can easily find some resource, for example search for "shiny missingNo [Ghost Form]".
 
 
 ### INSTALLATION
