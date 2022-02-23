@@ -1,6 +1,6 @@
 # Visible-Overworld-Wild-Encounters
 
-* Visible Overworld Wild Encounters Version 19.1.0.1 for PEv19.1 - by derFischae (Credits if used please)
+* Visible Overworld Wild Encounters Version 19.1.0.2 for PEv19.1 - by derFischae (Credits if used please)
 
 UPDATED TO VERSION 19.1.0.1 FOR POKEMON ESSENTIALS V19.1. This script is for Pokémon Essentials v19 and v19.1 (for short PEv19).
 
@@ -77,7 +77,7 @@ In Pokemon Essentials V18.1, it was introduced that normal wild encounter can en
 These encounters are normal encounters by default. This behaviour remains in Pokemon Essentials V18 and V19.1.
 The visible overworld wild encounter script simply clears everything on change of direction of the player.
 This works perfectly well, if you don't want to use any other script that triggers on change direction in your game.
-But if not, then you have to place all these scripts needs to be loaded after the visible overworld wild encounters script (so the clearing will not effect these scripts).
+But if not, then you have to place all these scripts have to be loaded after the visible overworld wild encounters script (so the clearing will not effect these scripts).
 Or you will have to use this fix:
 
 Open the script editor and go to the visible overworld wild encounter script. Search for the following code snippet
@@ -114,12 +114,26 @@ and
 - either remove that code (to remove that pokemon can encounter on changing the direction of your player), or
 - replace it by this code snippet 
 ```
-# Start wild overworld/mixed encounters while turning on the spot
+# Start wild mixed overworld/normal encounters while turning on the spot
 Events.onChangeDirection += proc {
-  pbBattleOrSpawnOnStepTaken($PokemonGlobal.repel > 0) if !$game_temp.in_menu
+  next if !$game_temp.in_menu
+  if pbBattleOrSpawnOnStepTaken($PokemonGlobal.repel > 0) 
+    pbBattleOnStepTaken(repel_active) # STANDARD WILD BATTLE
+  else
+    pbSpawnOnStepTaken(repel_active)  # OVERWORLD ENCOUNTERS
+  end
 }
 ```
-to replace normal wild encountering during direction changing by overworld/mixed encountering (prefered).
+to replace normal wild encountering during direction changing by mixed overworld/instant encountering (prefered), or
+- replace it by this code snippet 
+```
+# Start purely overworld encounters while turning on the spot
+Events.onChangeDirection += proc {
+  next if !$game_temp.in_menu
+  pbSpawnOnStepTaken(repel_active) if !pbBattleOrSpawnOnStepTaken($PokemonGlobal.repel > 0) 
+}
+```
+to replace normal wild encountering during direction changing by purely overworld encountering.
 
 ### CHANGELOG
 NEW FEATURES FROM VERSION 19.1.0,1 FOR PEv19:
