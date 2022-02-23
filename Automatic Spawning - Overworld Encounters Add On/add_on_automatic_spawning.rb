@@ -42,7 +42,7 @@ class Game_Map
     #repel = ($PokemonGlobal.repel>0)
     $framecounter = 0 if !$framecounter 
     $framecounter = $framecounter + 1
-    return unless $framecounter >= AUTO_SPAWN_SPEED
+    return unless $framecounter == AUTO_SPAWN_SPEED
     $framecounter = 0
     pbSpawnOnStepTaken(repel_active) if !pbBattleOrSpawnOnStepTaken(repel_active) 
   end
