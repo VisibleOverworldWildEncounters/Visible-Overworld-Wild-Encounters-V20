@@ -1,12 +1,12 @@
 
   #====================================================================#
   #                                                                    #
-  #     Visible Overworld Wild Encounters V19.1,0.1 for PEv19.1        #
+  #     Visible Overworld Wild Encounters V19.1,0.2 for PEv19.1        #
   #                         - by derFischae (Credits if used please)   #
   #                                                                    #
   #====================================================================#
 
-# UPDATED TO VERSION 19.1.0.1 FOR POKEMON ESSENTIALS V19.1. REDESIGNED as a PLUGIN.
+# UPDATED TO VERSION 19.1.0.2 FOR POKEMON ESSENTIALS V19.1. REDESIGNED as a PLUGIN.
 # This script is for Pokémon Essentials v19 and v19.1 (for short PEv19).
 
 # As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters
@@ -20,7 +20,6 @@
 #===============================================================================
 # NEW FEATURES
 #  [*] Easy Install as Plugin
-#  [*] Set movement of overworld pokemon depending on its properties
 #  [*] set steps a pokemon remains on map before despawning depending on pokemon properties 
 #  [*] Choose whether you can battle water pokemon while not surfing or not
 #  [*] In water pokemon won't spawn above other tiles, which made them stuck or walk on ground
@@ -326,20 +325,24 @@ def pbOnStepTaken(eventTriggered)
   Events.onStepTakenTransferPossible.trigger(nil,handled)
   return if handled[0]
   if !eventTriggered && !$game_temp.in_menu
-    pbBattleOrSpawnOnStepTaken(repel_active)
+    if pbBattleOrSpawnOnStepTaken(repel_active)
+      pbBattleOnStepTaken(repel_active) # STANDARD WILD BATTLE
+    else
+      pbSpawnOnStepTaken(repel_active)  # OVERWORLD ENCOUNTERS
+    end
   end
   $PokemonTemp.encounterTriggered = false   # This info isn't needed here
 end
 
 #===============================================================================
-# new Method to decide pbBattleOrSpawnOnStepTaken if if a normal encounter
-# encounters or an overworld pokemon spawns
+# new Method pbBattleOrSpawnOnStepTaken which gives true with the probability of
+# an instant encounter and false with the probability of an overworld encounter
 #===============================================================================
 def pbBattleOrSpawnOnStepTaken(repel_active)
   if (rand(100) < VisibleEncounterSettings::INSTANT_WILD_BATTLE_PROPABILITY) || pbPokeRadarOnShakingGrass
-    pbBattleOnStepTaken(repel_active) # STANDARD WILD BATTLE
+    return true
   else
-    pbSpawnOnStepTaken(repel_active)  # OVERWORLD ENCOUNTERS
+    return false
   end
 end
 
