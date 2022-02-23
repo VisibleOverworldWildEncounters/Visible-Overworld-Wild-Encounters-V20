@@ -300,9 +300,9 @@ Events.onChangeDirection.clear
 Events.onChangeDirection += proc {
   next if $game_temp.in_menu
   if pbBattleOrSpawnOnStepTaken($PokemonGlobal.repel > 0) 
-    pbBattleOnStepTaken(repel_active) # STANDARD WILD BATTLE
+    pbBattleOnStepTaken($PokemonGlobal.repel > 0) # STANDARD WILD BATTLE
   else
-    pbSpawnOnStepTaken(repel_active)  # OVERWORLD ENCOUNTERS
+    pbSpawnOnStepTaken($PokemonGlobal.repel > 0)  # OVERWORLD ENCOUNTERS
   end
 }
 
