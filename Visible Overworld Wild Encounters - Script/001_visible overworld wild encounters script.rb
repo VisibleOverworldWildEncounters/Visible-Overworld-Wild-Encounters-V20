@@ -295,10 +295,15 @@ Events.onChangeDirection.clear
 #  any other script by the community that uses it)
 
 Events.onChangeDirection += proc {
-  pbBattleOrSpawnOnStepTaken($PokemonGlobal.repel > 0) if !$game_temp.in_menu
+  next if $game_temp.in_menu
+  if pbBattleOrSpawnOnStepTaken($PokemonGlobal.repel > 0) 
+    pbBattleOnStepTaken(repel_active) # STANDARD WILD BATTLE
+  else
+    pbSpawnOnStepTaken(repel_active)  # OVERWORLD ENCOUNTERS
+  end
 }
 
-
+	
           #########################################################
           #                                                       #
           #      1. PART: SPAWNING THE OVERWORLD ENCOUNTER        #
