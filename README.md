@@ -111,7 +111,8 @@ Events.onChangeDirection += proc {
 }
 ```
 and 
-- either remove that code (to remove that pokemon can encounter on changing the direction of your player)
+- either keep everything how it is (to have purely normal encounters on change of direction), or
+- remove that code (to completely remove that pokemon can encounter on change of direction), or
 - or replace it by the following code snippet (to replace normal wild encountering during direction changing by mixed overworld/instant encountering, prefered)
 ```
 # Start wild mixed overworld/normal encounters while turning on the spot
