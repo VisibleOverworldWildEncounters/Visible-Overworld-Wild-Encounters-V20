@@ -46,6 +46,11 @@ As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters 
 - Variable Spawn/Normal Encounter Proportion During Game Add-On
   - Adds automatical spawning after time beside the default spawning while moving the player
   - Set the time period of automatic spawning
+- Automatic Spawning Add-On
+  - Choose whether pokemon spawn automatically or only while moving the player
+  - Set the speed of automatic spawning
+- Randomized Spawning Add-On
+  - It will randomize overworld encounters
 - Remove Poke Events on load/save/transfer Add-On
   - Remove overworld encounters on load/save and on map transfer
 - Overworld Lavender Town Ghosts Add-On
