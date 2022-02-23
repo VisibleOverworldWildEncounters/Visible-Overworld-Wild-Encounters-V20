@@ -22,11 +22,13 @@
 #===============================================================================
 # Settings
 #===============================================================================
-AUTO_SPAWN_SPEED = 60 # default 60
-#You can set the speed of automatic pokemon spawning, i.e. the ability of pokemon
-# to spawn automatically even without even moving the player.
-#0   - means that pokemon only spawn while the player is moving
-#>0  - means automatic spawning is activated, the closer to 0 the faster the spawning
+module VisibleEncounterSettings
+  AUTO_SPAWN_SPEED = 60 # default 60
+  #You can set the speed of automatic pokemon spawning, i.e. the ability of pokemon
+  # to spawn automatically even without even moving the player.
+  #0   - means that pokemon only spawn while the player is moving
+  #>0  - means automatic spawning is activated, the closer to 0 the faster the spawning
+end
 
 #===============================================================================
 # Overriding the update method of the class Game_Map in script section Game_Map
@@ -42,7 +44,7 @@ class Game_Map
     #repel = ($PokemonGlobal.repel>0)
     $framecounter = 0 if !$framecounter 
     $framecounter = $framecounter + 1
-    return unless $framecounter == AUTO_SPAWN_SPEED
+    return unless $framecounter == VisibleEncounterSettings::AUTO_SPAWN_SPEED
     $framecounter = 0
     pbSpawnOnStepTaken(repel_active) if !pbBattleOrSpawnOnStepTaken(repel_active) 
   end
