@@ -14,7 +14,7 @@
 
 
 module VisibleEncounterSettings
-  MAX_SPAWN = 1 # default 0
+  MAX_SPAWN = 0 # default 0
   # MAX_SPAWN is the max number of wild Encounters Events that can be spawned on the map at the same time.
   # <=0  - means infinite (no maximum)
   # >0   - maximum of wild encounters on the map  
