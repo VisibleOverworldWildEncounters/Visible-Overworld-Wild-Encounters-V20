@@ -51,6 +51,9 @@ As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters 
   - Set the speed of automatic spawning
 - Randomized Spawning Add-On
   - It will randomize overworld encounters
+- Ditto Transform Add-On
+  - Like in Pokemon Go, transformable Pokemon such as Ditto get the overworld appearence of different species
+  - Choose in settings if completely random, set by a list of candidates or set by the map encounters
 - Remove Poke Events on load/save/transfer Add-On
   - Remove overworld encounters on load/save and on map transfer
 - Overworld Lavender Town Ghosts Add-On
