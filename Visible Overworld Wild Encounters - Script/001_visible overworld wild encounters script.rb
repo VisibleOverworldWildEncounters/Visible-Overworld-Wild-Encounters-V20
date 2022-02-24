@@ -1,12 +1,12 @@
 
   #====================================================================#
   #                                                                    #
-  #     Visible Overworld Wild Encounters V19.1,0.2 for PEv19.1        #
+  #     Visible Overworld Wild Encounters V19.1,0.3 for PEv19.1        #
   #                         - by derFischae (Credits if used please)   #
   #                                                                    #
   #====================================================================#
 
-# UPDATED TO VERSION 19.1.0.2 FOR POKEMON ESSENTIALS V19.1. REDESIGNED as a PLUGIN.
+# UPDATED TO VERSION 19.1.0.3 FOR POKEMON ESSENTIALS V19.1. REDESIGNED as a PLUGIN.
 # This script is for Pokémon Essentials v19 and v19.1 (for short PEv19).
 
 # As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters
@@ -60,6 +60,9 @@
 #    [*] Set the speed of automatic spawning
 #  [*] Randomized Spawning Add-On
 #    [*] It will randomize overworld encounters
+#  [*] Ditto Transform Add-On
+#    [*] Like in Pokemon Go, transformable Pokemon such as Ditto get the overworld appearence of different species
+#    [*] Choose in settings if completely random, set by a list of candidates or set by the map encounters
 #  [*] Remove Poke Events on load/save/transfer Add-On
 #    [*] Remove overworld encounters on load/save and on map transfer
 #  [*] Overworld Lavender Town Ghosts Add-On
@@ -249,7 +252,7 @@ module VisibleEncounterSettings
     [:species, :SLOWPOKE, 1, 1, nil] # [:species, :SLOWPOKE, 1, 1, nil] means that slowpoke is very slow. It might still want to run random or to the player.
   ]
   # This parameter is used to change movement of spawned PokeEvents depending on the spawned pokemon.
-  # The data is stored as an array of arrays. You can add your own 
+  # The data is stored as an array of arrays. You can add your own arrays.s
   # The data is stored as an array of entries [variable, value, move_speed, move_frequency, move_type], where variable
   # is a variable or method which does not require parameters of the class Pokemon,
   # value is a possible outcome value of variable and move_speed, move_frequency and move_type are the movement speed,
@@ -630,8 +633,9 @@ class Game_Map
     graphic_form = (VisibleEncounterSettings::SPRITES[0] && form!=nil) ? form : 0
     graphic_gender = (VisibleEncounterSettings::SPRITES[1] && gender!=nil) ? gender : 0
     graphic_shiny = (VisibleEncounterSettings::SPRITES[2] && shiny!=nil) ? shiny : false
-    fname = GameData::Species.ow_sprite_filename(encounter[0].to_s, graphic_form, graphic_gender, graphic_shiny)
+    fname = ow_sprite_filename(encounter[0].to_s, graphic_form, graphic_gender, graphic_shiny)
     fname.gsub!("Graphics/Characters/","")
+
     event.pages[0].graphic.character_name = fname
     #--- movement of the event --------------------------------
     event.pages[0].move_speed = VisibleEncounterSettings::DEFAULT_MOVEMENT[0]
@@ -727,16 +731,12 @@ class Game_Map
 end
 
 #-------------------------------------------------------------------------------
-# New method for easily get the appropriate Pokemon Graphic (copied from Following Pokemon EX)
+# New method for easily get the appropriate Pokemon Graphic
 #-------------------------------------------------------------------------------
-module GameData
-  class Species
-    def self.ow_sprite_filename(species, form = 0, gender = 0, shiny = false, shadow = false)
-      ret = self.check_graphic_file("Graphics/Characters/", species, form, gender, shiny, shadow, "Followers")
-      ret = "Graphics/Characters/Followers/000" if nil_or_empty?(ret)
-	    return ret
-    end
-  end
+def ow_sprite_filename(species, form = 0, gender = 0, shiny = false, shadow = false)
+  fname = GameData::Species.check_graphic_file("Graphics/Characters/", species, form, gender, shiny, shadow, "Followers")
+  fname = "Graphics/Characters/Followers/000.png" if nil_or_empty?(fname)
+  return fname
 end
 
 class PokemonTemp
