@@ -25,6 +25,7 @@
 # See also the animations by TrankerGolD for aggressive encounters, water 
 # encounters, and shiny encounters under the following link 
 # https://www.pokecommunity.com/showpost.php?p=10395100&postcount=383
+# See also the Aggressive Encounters - Add On for the visible overworld wild encounters script
 #===============================================================================
 
 module VisibleEncounterSettings
@@ -46,7 +47,7 @@ module VisibleEncounterSettings
   ENC_SPAWN_ANIMATIONS = [     # default
     [:shiny?, true, 8],        # [:shiny?, true, 8],     -  means if pokemon is shiny then use animation with id 8
     [:pokerusStage, 1, 8],      # [:pokerusStage, 1, 11]  -  means if pokemon is infected then use animation with id 11
-    [:aggressive, true, 7]     # [:aggressive?, true, 11]  -  means if pokemon is aggressive encounter then use animation with id 11
+    [:aggressive, true, 7]     # [:aggressive?, true, 11]  -  means if pokemon is aggressive encounter (see Aggressive Encounter - Add On) then use animation with id 11
   ]
   # This parameter is used to add an animation to the PokeEvent depending on the spawning pokemon.
   # The data is stored as an array of entries [method, value, animation_id], where method is a variable or method which does not require parameters of the class Pokemon,
