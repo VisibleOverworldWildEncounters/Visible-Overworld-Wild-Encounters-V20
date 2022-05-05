@@ -1,12 +1,13 @@
 
+
   #====================================================================#
   #                                                                    #
-  #     Visible Overworld Wild Encounters V19.1,0.3 for PEv19.1        #
+  #     Visible Overworld Wild Encounters V19.1,0.4 for PEv19.1        #
   #                         - by derFischae (Credits if used please)   #
   #                                                                    #
   #====================================================================#
 
-# UPDATED TO VERSION 19.1.0.3 FOR POKEMON ESSENTIALS V19.1. REDESIGNED as a PLUGIN.
+# UPDATED TO VERSION 19.1.0.4 FOR POKEMON ESSENTIALS V19.1. REDESIGNED as a PLUGIN.
 # This script is for Pokémon Essentials v19 and v19.1 (for short PEv19).
 
 # As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters
@@ -34,6 +35,12 @@
 #  [*] You can check during the event @@OnWildPokemonCreate if the pokemon is created for spawning on the map or created for a different reason with the Global variable $PokemonGlobal.creatingSpawningPokemon
 #  [*] If you want to add a procedure that modifies a pokemon only for spawning but not before battling then you can use the Event @@OnWildPokemonCreateForSpawning.
 # ADDITIONAL FEATURES BY ADD-ONS:
+#  [*] Aggressive Encounters Add-On
+#    [*] Adds aggressive encounters to your game, which want to run to the player to attack
+#    [*] Aggressive ecounters are restricted to player movements
+#    [*] You can set the move speed and movee frequency of aggressive pokemon
+#    [*] See Additional Animations - Add On and TrankerGolD's animations for aggressive encounters
+#        at https://www.pokecommunity.com/showpost.php?p=10395100&postcount=383 to include spawning animations in your game
 #  [*] Additional Animations Add-On
 #    [*] manage different appear animations of overworld spawning encounters depending on encounter type and pokemon properties
 #    [*] Play animations while PokeEvent is visible on screen, such as a shiny animation
@@ -96,7 +103,10 @@
 #             CHANGELOG
 #===============================================================================
 
-# NEW FEATURES FROM VERSION 19.1.0,1 FOR PEv19:
+# NEW FEATURES FROM VERSION 19.1.0.4 FOR PEv19:
+#  - rearranged aggressive encounters as an Add On
+
+# NEW FEATURES FROM VERSION 19.1.0.1 FOR PEv19:
 #  - bug fix concerning roaming pokemon
 #  - included an easy way to set the steps a pokemon remains on map before despawning depending on pokemon properties 
 #  - rearranged features of previous version as add-ons, including
@@ -116,7 +126,7 @@
 #  - shiny animation while PokeEvent is visible on screen
 #  - choose wether remove by time chronometer or not with REMOVE_PROLONGED
 #  - added to add your own chance with VISIBLE_ENCOUNTER_PROBABILITY
-#  - aggressive ecounters restricted to player movements
+#  - aggressive encounters restricted to player movements
 #
 # NEW FEATURES FROM VERSION 19.0.9 FOR PEv19:
 #  - updated script to work with PEv19.1
@@ -214,12 +224,6 @@ module VisibleEncounterSettings
   # true  - means that pokemon on water won't spawn in the border
   # false - means that pokemon will also spawn on the border of water   
 
-  #--------------- DIFFERENT POKEEVENTS --------------------
-  AGGRESSIVE_ENCOUNTER_PROBABILITY = 20 # default 20 
-  #this is the probability in percent of spawning of an aggressive encounter, that runs to you
-  #0   - means that there are no aggressive encounters
-  #100 - means that all encounter are aggressive
-  
   #---------------- GRAPHICS OF SPAWNED POKEMON -------------------
   SPRITES = [true, true, true] # default [true, true, true]
   # This parameter must be an array [alt_form, female, shiny] of three bools.
@@ -247,9 +251,10 @@ module VisibleEncounterSettings
   # type = 0/ 1/ 3         - means no movement/ random movement/ run to player
   # ...
 
-  ENC_MOVEMENTS = [                  # default
-    [:aggressive, true, 3, 5, 3],    # [:aggressive, true, 3, 5, 3] means that aggressive encounters will be faster and run to the player
-    [:species, :SLOWPOKE, 1, 1, nil] # [:species, :SLOWPOKE, 1, 1, nil] means that slowpoke is very slow. It might still want to run random or to the player.
+  Enc_Movements = [                  # default
+    [:shiny?, true, 3, 4, nil],    # [:shiny?, true, 3, 4, 3] means that shiny encounters will be faster
+    [:species, :SLOWPOKE, 1, 1, nil], # [:species, :SLOWPOKE, 1, 1, nil] means that slowpoke is very slow. It might still want to run random or to the player.
+    [:nature, :NAUGHTY, nil, 4, 3] # [:nature, :NAUGHTY, nil, 4, 3] means pokemon with a naughty nature will run to the player and be faster
   ]
   # This parameter is used to change movement of spawned PokeEvents depending on the spawned pokemon.
   # The data is stored as an array of arrays. You can add your own arrays.s
@@ -270,9 +275,8 @@ module VisibleEncounterSettings
   DEFAULT_STEPS_BEFORE_VANISH = 10 # default 10
   # This is the number of steps a wild encounter goes by default before vanishing on the map.
 
-  ADD_STEPS_BEFORE_VANISH = [ # default
+  Add_Steps_Before_Vanish = [ # default
     [:shiny?, true, 8],       # [:shiny, true, 8]       - means that spawned shiny pokemon will more 8 steps longer on the map than default.
-    [:aggressive, true, 6],   # [:aggressive, true, 6]  - means that spawned shiny pokemon will stay longer (6 steps more) on the map
     [:species, :PIDGEY, -2]   # [:species, :PIDGEY, -2] - means that pidgeys will be gone faster (2 steps earlier).
   ]
   # This is an array of arrays. You can add your own conditions as an additional array. It must be of the form [variable, value, number] where
@@ -499,32 +503,6 @@ def pbPlaceEncounter(x,y,pokemon)
   pbPlayCryOnOverworld(pokemon.species, pokemon.form) # Play the pokemon cry of encounter
 end
 
-class Pokemon
-  #===============================================================================
-  # adding new variable aggressive in Class Pokemon. Every spawned, aggressive 
-  # Pokemon, i.e. a Pokemon that follows you on the map has this variable set true
-  #===============================================================================
-  attr_accessor :aggressive
-
-  #===============================================================================
-  # adding new Method aggressive? in Class Pokemon
-  #===============================================================================
-  def aggressive?(encType)
-    encType = GameData::EncounterType.try_get(encType)
-    return self.aggressive if self.aggressive == true || self.aggressive == false
-    if encType
-      #aggressive Pokemon on water only when surfing, and on land when not surfing
-      if (!$PokemonGlobal.surfing && encType.type == :water) || ($PokemonGlobal.surfing && encType.type != :water)
-        self.aggressive = false 
-        return false
-      end
-    end
-    if rand(100) < VisibleEncounterSettings::AGGRESSIVE_ENCOUNTER_PROBABILITY
-      self.aggressive = true
-      return true
-    end
-  end
-end
 
 #===============================================================================
 # adding new Method encounter_type_on_tile in Class PokemonEncounters
@@ -645,7 +623,7 @@ class Game_Map
     event.pages[0].trigger = 2
     event.pages[0].move_route.list[0].code = 10
     event.pages[0].move_route.list[1] = RPG::MoveCommand.new
-    for move in VisibleEncounterSettings::ENC_MOVEMENTS do
+    for move in VisibleEncounterSettings::Enc_Movements do
       if pokemon.method(move[0]).call == move[1]
         event.pages[0].move_speed = move[2] if move[2]
         event.pages[0].move_frequency = move[3] if move[3]
@@ -710,7 +688,7 @@ class Game_Map
     gameEvent.id = key_id
     gameEvent.moveto(x,y)
     gameEvent.pokemon = pokemon
-    for step in VisibleEncounterSettings::ADD_STEPS_BEFORE_VANISH
+    for step in VisibleEncounterSettings::Add_Steps_Before_Vanish
       step_method = step[0]
       step_value = step[1]
       step_count = step[2]
