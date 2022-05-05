@@ -1,8 +1,8 @@
 # Visible-Overworld-Wild-Encounters
 
-* Visible Overworld Wild Encounters Version 19.1.0.3 for PEv19.1 - by derFischae (Credits if used please)
+* Visible Overworld Wild Encounters Version 19.1.0.4 for PEv19.1 - by derFischae (Credits if used please)
 
-UPDATED TO VERSION 19.1.0.3 FOR POKEMON ESSENTIALS V19.1. This script is for Pokémon Essentials v19 and v19.1 (for short PEv19).
+UPDATED TO VERSION 19.1.0.4 FOR POKEMON ESSENTIALS V19.1. This script is for Pokémon Essentials v19 and v19.1 (for short PEv19).
 
 As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters pop up on the overworld, they move around and you can start the battle with them simply by moving to the pokemon. Clearly, you also can omit the battle by circling around them.
 
@@ -24,11 +24,15 @@ As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters 
 - You can check during the event @@OnWildPokemonCreate if the pokemon is created for spawning on the map or created for a different reason with the Global variable $PokemonGlobal.creatingSpawningPokemon
 - If you want to add a procedure that modifies a pokemon only for spawning but not before battling then you can use the Event @@OnWildPokemonCreateForSpawning.
 ### ADDITIONAL FEATURES BY ADD-ONS:
+- Aggressive Encounters Add-On
+  - Adds aggressive encounters to your game, which want to run to the player to attack
+  - Aggressive ecounters are restricted to player movements
+  - You can set the move speed and movee frequency of aggressive pokemon
+  - See Additional Animations - Add On and TrankerGolD's animations for aggressive encounters at https://www.pokecommunity.com/showpost.php?p=10395100&postcount=383 to include spawning animations in your game  
 - Additional Animations Add-On
   - manage different appear animations of overworld spawning encounters depending on encounter type and pokemon properties
   - Play animations while PokeEvent is visible on screen, such as a shiny animation
   - See also the animations by TrankerGolD for aggressive encounters, water encounters, and shiny encounters https://www.pokecommunity.com/showpost.php?p=10395100&postcount=383
-
 - Different Spawn And Normal Encounters (like in Pokemon Sword/Shield) Add-On
   - Introduces Overworld Encounter Types you can set in your encounters.txt PBS-file.
   - This allows you to define different encounters for overworld spawning and instant battling on the same map.
@@ -150,7 +154,10 @@ Events.onChangeDirection += proc {
 ```
 
 ### CHANGELOG
-NEW FEATURES FROM VERSION 19.1.0,1 FOR PEv19:
+NEW FEATURES FROM VERSION 19.1.0.4 FOR PEv19:
+ - rearranged aggressive encounters as an Add On
+
+NEW FEATURES FROM VERSION 19.1.0.1 FOR PEv19:
  - easy install as plugin
  - bug concerning roaming pokemon fixed
  - included an easy way to set the steps a pokemon remains on map before despawning depending on pokemon properties 
