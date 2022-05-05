@@ -1,4 +1,4 @@
 Name      = Visible Overworld Wild Encounters
-Version   = 19.1.0.3
+Version   = 19.1.0.4
 Website   = https://www.pokecommunity.com/showthread.php?t=429019
 Credits   = derFischae
