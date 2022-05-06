@@ -44,17 +44,16 @@ module VisibleEncounterSettings
   # The data is stored as an array of entries [encounter_type, animation_id], where encounter_type is a GameData::EncounterType 
   # and animation_id is the id of the user animation.
   
-  ENC_SPAWN_ANIMATIONS = [     # default
+  Enc_Spawn_Animations = [     # default
     [:shiny?, true, 8],        # [:shiny?, true, 8],     -  means if pokemon is shiny then use animation with id 8
-    [:pokerusStage, 1, 8],      # [:pokerusStage, 1, 11]  -  means if pokemon is infected then use animation with id 11
-    [:aggressive, true, 7]     # [:aggressive?, true, 11]  -  means if pokemon is aggressive encounter (see Aggressive Encounter - Add On) then use animation with id 11
+    [:pokerusStage, 1, 8]      # [:pokerusStage, 1, 11]  -  means if pokemon is infected then use animation with id 11
   ]
   # This parameter is used to add an animation to the PokeEvent depending on the spawning pokemon.
   # The data is stored as an array of entries [method, value, animation_id], where method is a variable or method which does not require parameters of the class Pokemon,
   # value is a possible outcome value of the method method and animation_id is the id of the user animation that should 
   # trigger if value == pokemon.method for the spawning pokemon pokemon.
   
-  PERMA_ENC_ANIMATIONS = [  # default
+  Perma_Enc_Animations = [  # default
     [:shiny?, true, 7],     # [:shiny?, true, 7],  -  means if pokemon is shiny then permanently play animation with id 7 from database
   ]
   # This parameter is used to add an permanent animation to the PokeEvent depending on the spawning pokemon.
@@ -91,7 +90,7 @@ def pbPlaceEncounter(x,y,pokemon)
     end
   end
   #Appear Encounter Animations
-  for anim in VisibleEncounterSettings::ENC_SPAWN_ANIMATIONS
+  for anim in VisibleEncounterSettings::Enc_Spawn_Animations
     anim_method = anim[0]
     anim_value = anim[1]
     anim_id = anim[2]
@@ -111,7 +110,7 @@ class Game_PokeEvent < Game_Event
   def update
     if !$game_temp.in_menu
 
-      for anim in VisibleEncounterSettings::PERMA_ENC_ANIMATIONS
+      for anim in VisibleEncounterSettings::Perma_Enc_Animations
         anim_method = anim[0]
         anim_value = anim[1]
         anim_id = anim[2]
@@ -139,13 +138,3 @@ class Game_PokeEvent < Game_Event
     anim_update
   end
 end
-
-#-------------------------------------------------------------------------------
-# adding this process to the Event onWildPokemonCreateForSpawning to distinguish 
-# between aggressive encounters and non-aggressive ones
-#-------------------------------------------------------------------------------
-Events.onWildPokemonCreateForSpawning += proc { |_sender,_e|
-  pokemon = _e[0]
-  encType = GameData::EncounterType.try_get($PokemonTemp.encounterType)
-  pokemon.aggressive?(encType)
-}
