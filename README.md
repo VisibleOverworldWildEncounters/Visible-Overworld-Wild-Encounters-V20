@@ -25,10 +25,11 @@ As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters 
 - If you want to add a procedure that modifies a pokemon only for spawning but not before battling then you can use the Event @@OnWildPokemonCreateForSpawning.
 ### ADDITIONAL FEATURES BY ADD-ONS:
 - Aggressive Encounters Add-On
-  - Adds aggressive encounters to your game, which want to run to the player to attack
-  - Aggressive ecounters are restricted to player movements
-  - You can set the move speed and movee frequency of aggressive pokemon
-  - See Additional Animations - Add On and TrankerGolD's animations for aggressive encounters at https://www.pokecommunity.com/showpost.php?p=10395100&postcount=383 to include spawning animations in your game  
+  - introduces aggressive encounters, which are pokemon that chase the player after spawning
+  - aggressive encounters may only start to chase if the player comes them to close
+  - set the move speed, move frequency and move type of aggressive pokemon
+  - aggressive ecounters are restricted to player movements
+  - add animations to aggressive encounters. See Additional Animations -Add On and TrankerGolD's animations for aggressive encounters at https://www.pokecommunity.com/showpost.php?p=10395100&postcount=383 to include spawning animations in your game
 - Additional Animations Add-On
   - manage different appear animations of overworld spawning encounters depending on encounter type and pokemon properties
   - Play animations while PokeEvent is visible on screen, such as a shiny animation
