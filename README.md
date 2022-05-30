@@ -72,7 +72,7 @@ If you need help, found a bug or search for more modifications then go to https:
   - The distance (steps) is edited in DISTANCE_VANISH and DISTANCE_VANISH_SHINY
   - Remove by time chronometer with REMOVE_PROLONGED
   - Use your own overworld spawn chance in VISIBLE_ENCOUNTER_PROBABILITY
-- Own Minimum Spawn Chance
+- Own Minimum Spawn Chance Add-On
   - The Spawn probability of the first encounter and later ones are similar.
   - Spawning does not interact with the encounter chance for normal encounters.
   - Increase the average spawning time of pokemon by setting MAX_ENCOUNTER_REDUCED larger than zero in the settings section of this script
