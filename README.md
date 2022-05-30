@@ -60,6 +60,10 @@ If you need help, found a bug or search for more modifications then go to https:
 - Different Spawn And Normal Encounters (like in Pokemon Sword/Shield) Add-On
   - Introduces Overworld Encounter Types you can set in your encounters.txt PBS-file.
   - This allows you to define different encounters for overworld spawning and instant battling on the same map.
+- Reroll Spawn Tile Add-On
+  - stabilizes the probability of spawning on maps with low grass by choosing another tile if the previous random chosen one does not allow spawning  
+  - set the maximal number of tiles chosen for spawning in parameter NO_OF_CHOSEN_TILES
+  - be careful, it might produce lag with other scripts
 - Max Spawn Add-On
   - Define a maximal limit of spawned pokemon on the overworld at the same time.
   - After reaching that limit MAX_SPAWN no pokemon will spawn until another pokemon despawned.
