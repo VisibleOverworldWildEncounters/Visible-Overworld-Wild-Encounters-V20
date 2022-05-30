@@ -218,9 +218,9 @@ GameData::EncounterType.register({
 #===============================================================================
 
 #def pbRoamingMethodAllowed(roamer_method)
-#  enc_type = $PokemonTemp.encounterType # $PokemonTemp.encounterType stores the encounter type of the chosen tile
-#  id = GameData::EncounterType.get(enc_type).id
+#  enc_type = $game_temp.encounter_type # $game_temp.encounter_type stores the encounter type of the chosen tile
 #  type = GameData::EncounterType.get(enc_type).type
+#  id = GameData::EncounterType.get(enc_type).id
 #  case roamer_method
 #  when 0   # Any step-triggered method (except Bug Contest)
 #    return [:land, :cave, :water].include?(type)
