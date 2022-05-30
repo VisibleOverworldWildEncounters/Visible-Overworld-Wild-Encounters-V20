@@ -5,9 +5,10 @@
 #
 # Copy the folder of this plugin in your plugins folder.
 
-Events.onWildPokemonCreateForSpawning+=proc{|sender,e|
-  pokemon=e[0]
-  keys = GameData::Species.keys
-  k = rand(keys.size)
-  pokemon.species = keys[k]
-}
+EventHandlers.add(:on_wild_pokemon_created_for_spawning, :randomized_spawn,
+  proc { |pkmn|
+    keys = GameData::Species.keys
+    k = rand(keys.size)
+    pkmn.species = keys[k]
+  }
+)
