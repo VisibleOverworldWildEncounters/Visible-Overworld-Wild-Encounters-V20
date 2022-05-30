@@ -96,8 +96,10 @@ If you need help, found a bug or search for more modifications then go to https:
 ### CHANGELOG
 NEW FEATURES FROM VERSION 20.0.0.1 FOR PEv20:
  - updated v19.1.0.4 to make it compatible with PEv20
+
 NEW FEATURES FROM VERSION 19.1.0.4 FOR PEv19:
  - rearranged aggressive encounters as an Add On
+
 NEW FEATURES FROM VERSION 19.1.0.1 FOR PEv19:
  - easy install as plugin
  - bug concerning roaming pokemon fixed
@@ -109,6 +111,7 @@ NEW FEATURES FROM VERSION 19.1.0.1 FOR PEv19:
     - choose wether remove distanced spawned pokemon or not with REMOVE_DISTANCED parameter
     - choose wether remove by time chronometer or not with REMOVE_PROLONGED
     - added to add your own overworld encounter chance with VISIBLE_ENCOUNTER_PROBABILITY
+
 NEW FEATURES FROM VERSION 19.0.10 FOR PEv19:
  - fixed water pokemon spawning in platform above water tile
  - water pokemon won't appear in the border
@@ -118,22 +121,30 @@ NEW FEATURES FROM VERSION 19.0.10 FOR PEv19:
  - shiny animation while PokeEvent is visible on screen
  - choose wether remove by time chronometer or not with REMOVE_PROLONGED
  - added to add your own overworld encounter chance with VISIBLE_ENCOUNTER_PROBABILITY
+
 NEW FEATURES FROM VERSION 19.0.9 FOR PEv19:
  - updated script to work with PEv19.1
  - used $PokemonTemp.encounterType to trigger different appear animations
  - added alternative stepcount before vanishining for shiny pokemon
+
 NEW FEATURES FROM VERSION 18.0.8 FOR PEv18:
  - tiny bug fix for $PokemonTemp.encounterType
+
 NEW FEATURES FROM VERSION 18.0.7 FOR PEv18:
  - removed a bug concerning changing the standard form when goining into battle
+
 NEW FEATURES FROM VERSION 18.0.6 FOR PEv18:
   - (hopefully) removed a rare crash concerning character_sprites
+
 NEW FEATURES FROM VERSION 2.0.5 FOR PEv18:
   - removed bug that makes all water encounter vanish
+
 NEW FEATURES FROM VERSION 2.0.4 FOR PEv18:
   - encounters dont spawn on impassable tiles in caves
+
 NEW FEATURES FROM VERSION 2.0.3 FOR PEv18:
   - poke radar works as usual
+
 NEW FEATURES FROM VERSION 2.0.2 FOR PEv18:
   - added new global variable $PokemonGlobal.creatingSpawningPokemon to check during the event @@OnWildPokemonCreate if the pokemon is created for spawning on the map or created for a different reason
 UPSCALED FEATURES FROM VERSION 2.0.1 FOR PEv17.2:
@@ -163,4 +174,3 @@ UPSCALED FEATURES FROM VERSION 2.0.1 FOR PEv17.2:
   - Now, using overworld and normal encounters at the same time is a standard feature
   - autospawning will not trigger instant battles anymore
   - removed a bug that came from reorganising the code in original code and add-ons concerning Let's go shiny hunting add-on
-
