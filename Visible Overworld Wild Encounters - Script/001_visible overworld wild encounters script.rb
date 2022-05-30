@@ -2,13 +2,12 @@
 
   #====================================================================#
   #                                                                    #
-  #     Visible Overworld Wild Encounters V19.1.0.4 for PEv19.1        #
+  #     Visible Overworld Wild Encounters V20.0.0.1 for PEv20          #
   #                         - by derFischae (Credits if used please)   #
   #                                                                    #
   #====================================================================#
 
-# UPDATED TO VERSION 19.1.0.4 FOR POKEMON ESSENTIALS V19.1. REDESIGNED as a PLUGIN.
-# This script is for Pokémon Essentials v19 and v19.1 (for short PEv19).
+# This script is for Pokémon Essentials v20 (for short PEv20). UPDATED TO VERSION 20.0.0.1.
 
 # As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters
 # pop up on the overworld, they move around and you can start the battle with
@@ -19,22 +18,30 @@
 #===============================================================================
 #            FEATURES
 #===============================================================================
-# NEW FEATURES
+
 #  [*] Easy Install as Plugin
-#  [*] set steps a pokemon remains on map before despawning depending on pokemon properties 
-#  [*] Choose whether you can battle water pokemon while not surfing or not
-#  [*] In water pokemon won't spawn above other tiles, which made them stuck or walk on ground
-# UPSCALED FEATURES INCLUDED from PEv18:
 #  [*] see the pokemon on the overworld before going into battle
 #  [*] no forced battling against overworld encounters
+#  [*] Supports individual sprites for shiny, female and alternative forms
 #  [*] plays the pokemon cry while spawning
-#  [*] Choose whether encounters occure on all terrains or only on the terrain of the player
-#  [*] you can have instant wild battle and overworld spawning at the same time and set the propability of that by default and change it ingame and store it with a $game_variable
+#  [*] Overworld pokemon will despawn after some steps
+#  [*] you can have instant wild battle and overworld spawning at the same time and set the propability of that in percentage
 #  [*] In caves, pokemon don't spawn on impassable Rock-Tiles, which have the Tile-ID 4 
-#  [*] You can check during the events @@OnWildPokemonCreate, @@OnStartBattle, ... if you are battling a spawned pokemon with the global variable $PokemonGlobal.battlingSpawnedPokemon
-#  [*] You can check during the event @@OnWildPokemonCreate if the pokemon is created for spawning on the map or created for a different reason with the Global variable $PokemonGlobal.creatingSpawningPokemon
-#  [*] If you want to add a procedure that modifies a pokemon only for spawning but not before battling then you can use the Event @@OnWildPokemonCreateForSpawning.
-# ADDITIONAL FEATURES BY ADD-ONS:
+#  [*] In water, pokemon won't spawn above other tiles, which made them stuck or walk on ground
+#  [*] See "advanced features" and "additional features by add-ons" below for more (e.g. additional animations...)
+
+# ADVANCED FEATURES [/b]
+#  [*] Set the size of the area around the player where pokemon can spawn
+#  [*] Choose whether encounters occure on all terrains or only on the terrain of the player
+#  [*] Allow or forbid water pokemon to spawn on border
+#  [*] Set movement of overworld pokemon depending on its properties
+#  [*] Choose whether you can battle water pokemon while not surfing or not
+#  [*] set steps a pokemon remains on map before despawning depending on pokemon properties 
+#  [*] You can check during the events :on_wild_species_chosen, :on_wild_pokemon_created, :on_calling_wild_battle ... if you are battling a spawned pokemon with the global variable $PokemonGlobal.battlingSpawnedPokemon
+#  [*] You can check during the events :on_wild_species_chosen and :on_wild_pokemon_created if the pokemon is created for spawning on the map or created for a different reason with the Global variable $PokemonGlobal.creatingSpawningPokemon
+#  [*] If you want to add a procedure that modifies a pokemon only for spawning but not before battling then you can use the Event :on_wild_pokemon_created_for_spawning
+
+# ADDITIONAL FEATURES BY ADD-ONS (for PEv19, might be outdated, but feel free to test):
 #  [*] Aggressive Encounters Add-On
 #    [*] introduces aggressive encounters, which are pokemon that chase the player after spawning
 #    [*] aggressive encounters may only start to chase if the player comes them to close
@@ -95,22 +102,20 @@
 #    usual form     - SPECIES.png   where SPECIES is the species name in capslock (e.g. PIDGEY.png)
 #    alternate form - SPECIES_n.png where n is the number of the form (e.g. PIKACHU_3.png)
 #    female form    - SPECIES_female.png or SPECIES_n_female (e.g. PIDGEY_female.png or PIKACHU_3_female.png)
-# [2] Add Script: Follow this link https://github.com/VisibleOverworldWildEncounters/Visible-Overworld-Wild-Encounters and copy the folder "Visible Overworld Wild Encounters - Script" to your "/plugins/" folder.
+# [2] Add Script: Follow this link https://github.com/VisibleOverworldWildEncounters/V20 and copy the folder "Visible Overworld Wild Encounters - Script" to your "/plugins/" folder.
 # [3] Change Settings: Open the script file in the folder and change the parameters in the settings section therein as you like. Details descriptions about the parameters can be found there as well. 
 # [4] Install Add-Ons (the other folders): There are a lot of Add-Ons and parameter settings for your personal optimal solution. So, Copy Add-Ons in your "/plugins/" folder and edit parameters in settings of that Add-Ons to your liking. Some Add-On and parameter combinations can produce lag, e.g. a high spawning rate without a spawning cap, or e.g. "NO_OF_CHOSEN_TILES=0" (or too high) when having other scripts like Pokemon Following.
-# [5] If you use any other script that triggers on change of direction of the player, then either 
-#     [*] these scripts have to be loaded after this visible overworld wild encounter script, or
-#     [*] you have to use the bug fix for OnChangeDirection ( See https://github.com/VisibleOverworldWildEncounters/Visible-Overworld-Wild-Encounters/ ).
-# [6] Enjoy!
+# [5] Enjoy!
 
 
 #===============================================================================
 #             CHANGELOG
 #===============================================================================
 
+# NEW FEATURES FROM VERSION 20.0.0.1 FOR PEv19:
+#  - updated version 19.1.0.4 to make it compatible with PEv20
 # NEW FEATURES FROM VERSION 19.1.0.4 FOR PEv19:
 #  - rearranged aggressive encounters as an Add On
-
 # NEW FEATURES FROM VERSION 19.1.0.1 FOR PEv19:
 #  - bug fix concerning roaming pokemon
 #  - included an easy way to set the steps a pokemon remains on map before despawning depending on pokemon properties 
@@ -121,7 +126,6 @@
 #     - choose wether remove distanced spawned pokemon or not with REMOVE_DISTANCED parameter
 #     - choose wether remove by time chronometer or not with REMOVE_PROLONGED
 #     - added to add your own overworld encounter chance with VISIBLE_ENCOUNTER_PROBABILITY
-
 # NEW FEATURES FROM VERSION 19.0.10 FOR PEv19:
 #  - fixed water pokemon spawning in platform above water tile
 #  - water pokemon won't appear in the border
@@ -132,33 +136,24 @@
 #  - choose wether remove by time chronometer or not with REMOVE_PROLONGED
 #  - added to add your own chance with VISIBLE_ENCOUNTER_PROBABILITY
 #  - aggressive encounters restricted to player movements
-#
 # NEW FEATURES FROM VERSION 19.0.9 FOR PEv19:
 #  - updated script to work with PEv19.1
-#  - used $PokemonTemp.encounterType to trigger diferent appear animations
+#  - used $game_temp.encounter_type to trigger diferent appear animations
 #  - added alternative stepcount before vanishining for shiny pokemon
-#
 # NEW FEATURES FROM VERSION 18.0.8 FOR PEv18:
-#  - tiny bug fix for $PokemonTemp.encounterType
-#
+#  - tiny bug fix for $game_temp.encounter_type
 # NEW FEATURES FROM VERSION 18.0.7 FOR PEv18:
 #  - removed a bug concerning changing the standard form when goining into battle
-#
 # NEW FEATURES FROM VERSION 18.0.6 FOR PEv18:
 #   - (hopefully) removed a rare crash concerning character_sprites
-#
 # NEW FEATURES FROM VERSION 2.0.5 FOR PEv18:
 #   - removed bug that makes all water encounter vanish
-#
 # NEW FEATURES FROM VERSION 2.0.4 FOR PEv18:
 #   - encounters dont spawn on impassable tiles in caves
-#
 # NEW FEATURES FROM VERSION 2.0.3 FOR PEv18:
 #   - poke radar works as usual
-#
 # NEW FEATURES FROM VERSION 2.0.2 FOR PEv18:
 #   - added new global variable $PokemonGlobal.creatingSpawningPokemon to check during the event @@OnWildPokemonCreate if the pokemon is created for spawning on the map or created for a different reason
-#
 # UPSCALED FEATURES FROM VERSION 2.0.1 FOR PEv17.2:
 #   - less lag
 #   - supports sprites for alternative forms of pokemon
@@ -242,8 +237,8 @@ module VisibleEncounterSettings
   #  female form    - SPECIES_female.png or SPECIES_n_female (e.g. PIDGEY_female.png or PIKACHU_3_female.png)
   
   USE_STEP_ANIMATION = true # default true
-  #false - means that overworld encounters don't have a stop- animation
-  #true - means that overworld encounters have a stop- animation similar as  
+  #false - means that overworld encounters don't have a stop-animation
+  #true - means that overworld encounters have a stop-animation similar as  
   #       following pokemon
   
   #------------------- MOVEMENT OF SPAWNED POKEMON -----------------------
@@ -306,19 +301,19 @@ end
 #   - ChangeDirection will be considered as taking a step
 #===============================================================================
 
-Events.onChangeDirection.clear
-# Notice that this will clear everything related to onChangeDirection
-# (on PEv19.1 there is only one proc, so this entire script must be above
-#  any other script by the community that uses it)
+EventHandlers.remove(:on_player_change_direction, :trigger_encounter)
 
-Events.onChangeDirection += proc {
-  next if $game_temp.in_menu
-  if pbBattleOrSpawnOnStepTaken($PokemonGlobal.repel > 0) 
-    pbBattleOnStepTaken($PokemonGlobal.repel > 0) # STANDARD WILD BATTLE
-  else
-    pbSpawnOnStepTaken($PokemonGlobal.repel > 0)  # OVERWORLD ENCOUNTERS
-  end
-}
+EventHandlers.add(:on_player_change_direction, :trigger_encounter,
+  proc {
+    next if $game_temp.in_menu
+    repel_active = ($PokemonGlobal.repel > 0)
+    if pbBattleOrSpawnOnStepTaken(repel_active) 
+      pbBattleOnStepTaken(repel_active) # STANDARD WILD BATTLE
+    else
+      pbSpawnOnStepTaken(repel_active)  # OVERWORLD ENCOUNTERS
+    end
+  }
+)
 
 
           #########################################################
@@ -329,22 +324,21 @@ Events.onChangeDirection += proc {
 
 
 #===============================================================================
-# We override the original method "pbOnStepTaken" in Script Overworld it was 
-# originally used for wild encounter battles
+# We override the original method "pbOnStepTaken" in Script Overworld.
+# It was  originally used for wild encounter battles
 #===============================================================================
 def pbOnStepTaken(eventTriggered)
   if $game_player.move_route_forcing || pbMapInterpreterRunning?
-    Events.onStepTakenFieldMovement.trigger(nil,$game_player)
+    EventHandlers.trigger(:on_step_taken, $game_player)
     return
   end
   $PokemonGlobal.stepcount = 0 if !$PokemonGlobal.stepcount
   $PokemonGlobal.stepcount += 1
   $PokemonGlobal.stepcount &= 0x7FFFFFFF
   repel_active = ($PokemonGlobal.repel > 0)
-  Events.onStepTaken.trigger(nil)
-#  Events.onStepTakenFieldMovement.trigger(nil,$game_player)
+  EventHandlers.trigger(:on_player_step_taken)
   handled = [nil]
-  Events.onStepTakenTransferPossible.trigger(nil,handled)
+  EventHandlers.trigger(:on_player_step_taken_can_transfer, handled)
   return if handled[0]
   if !eventTriggered && !$game_temp.in_menu
     if pbBattleOrSpawnOnStepTaken(repel_active)
@@ -353,7 +347,7 @@ def pbOnStepTaken(eventTriggered)
       pbSpawnOnStepTaken(repel_active)  # OVERWORLD ENCOUNTERS
     end
   end
-  $PokemonTemp.encounterTriggered = false   # This info isn't needed here
+  $game_temp.encounter_triggered = false   # This info isn't needed here
 end
 
 #===============================================================================
@@ -373,29 +367,30 @@ end
 #===============================================================================
 def pbSpawnOnStepTaken(repel_active)
   return if $Trainer.able_pokemon_count == 0 #check if trainer has pokemon
-  #First we decide if there are too many PokeEvents encounters in current map
+  #First we choose a tile near the player
   pos = pbChooseTileOnStepTaken
   return if !pos
   encounter_type = $PokemonEncounters.encounter_type_on_tile(pos[0],pos[1])
   return if !encounter_type
   return if !$PokemonEncounters.encounter_triggered_on_tile?(encounter_type, repel_active, true)
-  $PokemonTemp.encounterType = encounter_type
+  $game_temp.encounter_type = encounter_type
   encounter = $PokemonEncounters.choose_wild_pokemon(encounter_type)
-  encounter = EncounterModifier.trigger(encounter)
+  $PokemonGlobal.creatingSpawningPokemon = true
+  EventHandlers.trigger(:on_wild_species_chosen, encounter)
   if $PokemonEncounters.allow_encounter?(encounter, repel_active)
-    $PokemonGlobal.creatingSpawningPokemon = true
     pokemon = pbGenerateWildPokemon(encounter[0],encounter[1])
     # trigger event on spawning of pokemon
-    Events.onWildPokemonCreateForSpawning.trigger(nil,pokemon)
-    $PokemonGlobal.creatingSpawningPokemon = false
+    EventHandlers.trigger(:on_wild_pokemon_created_for_spawning, pokemon)
     pbPlaceEncounter(pos[0],pos[1],pokemon)
     # $PokemonEncounters.reset_step_count # added such that your encounter rate resets after spawning of an overworld pokemon 
-    $PokemonTemp.encounterType = nil
-    $PokemonTemp.encounterTriggered = true
+    $game_temp.encounter_type = nil
+    $game_temp.encounter_triggered = true
   end
-  $PokemonTemp.forceSingleBattle = false
-  EncounterModifier.triggerEncounterEndSpawn
-  EncounterModifier.triggerEncounterEnd
+  $game_temp.force_single_battle = false
+  EventHandlers.trigger(:on_wild_pokemon_created_for_spawning_end)
+  $PokemonGlobal.creatingSpawningPokemon = false
+  #EncounterModifier.triggerEncounterEndSpawn
+  #EncounterModifier.triggerEncounterEnd # not use anymore in PEv20 ?
 end
 
 #===============================================================================
@@ -568,7 +563,7 @@ class PokemonEncounters
   # similar to have_double_wild_battle but depends on tile.
   #===============================================================================
   def have_double_wild_battle_on_tile?(x, y, map_id)
-    return false if $PokemonTemp.forceSingleBattle
+    return false if $game_temp.force_single_battle
     return false if pbInSafari?
     return true if $PokemonGlobal.partner
     return false if $Trainer.able_pokemon_count <= 1
@@ -637,10 +632,10 @@ class Game_Map
     end
     #--- event commands of the event -------------------------------------
     #  - add a method that stores temp data when PokeEvent is triggered, must include
-    #    $PokemonGlobal.roamEncounter, $PokemonTemp.roamerIndex, $PokemonGlobal.nextBattleBGM, $PokemonTemp.forceSingleBattle, $PokemonTemp.encounterType
+    #    $PokemonGlobal.roamEncounter, $game_temp.roamer_index_for_encounter, $PokemonGlobal.nextBattleBGM, $game_temp.force_single_battle, $game_temp.encounter_type
     Compiler::push_script(event.pages[0].list,sprintf(" pbStoreTempForBattle()"))
     #  - set data for roamer and encounterType, that is
-    #    $PokemonGlobal.roamEncounter, $PokemonTemp.roamerIndex, $PokemonGlobal.nextBattleBGM, $PokemonTemp.forceSingleBattle, $PokemonTemp.encounterType
+    #    $PokemonGlobal.roamEncounter, $game_temp.roamer_index_for_encounter, $PokemonGlobal.nextBattleBGM, $game_temp.force_single_battle, $game_temp.encounter_type
     if $PokemonGlobal.roamEncounter!=nil # i.e. $PokemonGlobal.roamEncounter = [i,species,poke[1],poke[4]]
       parameter1 = $PokemonGlobal.roamEncounter[0].to_s
       parameter2 = $PokemonGlobal.roamEncounter[1].to_s
@@ -651,13 +646,13 @@ class Game_Map
       parameter = " $PokemonGlobal.roamEncounter = nil "
     end
     Compiler::push_script(event.pages[0].list,sprintf(parameter))
-    parameter = ($PokemonTemp.roamerIndex!=nil) ? " $PokemonTemp.roamerIndex = "+$PokemonTemp.roamerIndex.to_s : " $PokemonTemp.roamerIndex = nil "
+    parameter = ($game_temp.roamer_index_for_encounter!=nil) ? " $game_temp.roamer_index_for_encounter = "+$game_temp.roamer_index_for_encounter.to_s : " $game_temp.roamer_index_for_encounter = nil "
     Compiler::push_script(event.pages[0].list,sprintf(parameter))
     parameter = ($PokemonGlobal.nextBattleBGM!=nil) ? " $PokemonGlobal.nextBattleBGM = '"+$PokemonGlobal.nextBattleBGM.to_s+"'" : " $PokemonGlobal.nextBattleBGM = nil "
     Compiler::push_script(event.pages[0].list,sprintf(parameter))
-    parameter = ($PokemonTemp.forceSingleBattle!=nil) ? " $PokemonTemp.forceSingleBattle = "+$PokemonTemp.forceSingleBattle.to_s : " $PokemonTemp.forceSingleBattle = nil "
+    parameter = ($game_temp.force_single_battle!=nil) ? " $game_temp.force_single_battle = "+$game_temp.force_single_battle.to_s : " $game_temp.force_single_battle = nil "
     Compiler::push_script(event.pages[0].list,sprintf(parameter))
-    parameter = ($PokemonTemp.encounterType!=nil) ? " $PokemonTemp.encounterType = :"+$PokemonTemp.encounterType.to_s : " $PokemonTemp.encounterType = nil "
+    parameter = ($game_temp.encounter_type!=nil) ? " $game_temp.encounter_type = :"+$game_temp.encounter_type.to_s : " $game_temp.encounter_type = nil "
     Compiler::push_script(event.pages[0].list,sprintf(parameter))
     #  - add a branch to check if player can battle water pokemon from ground
     Compiler::push_branch(event.pages[0].list,sprintf(" pbCheckBattleAllowed()"))
@@ -676,7 +671,7 @@ class Game_Map
     #  - add the end of branch
     Compiler::push_branch_end(event.pages[0].list,1)
     #  - add a method to reset temporary data to previous state, must include
-    #    $PokemonGlobal.roamEncounter, $PokemonTemp.roamerIndex, $PokemonGlobal.nextBattleBGM, $PokemonTemp.forceSingleBattle, $PokemonTemp.encounterType
+    #    $PokemonGlobal.roamEncounter, $game_temp.roamer_index_for_encounter, $PokemonGlobal.nextBattleBGM, $game_temp.force_single_battle, $game_temp.encounter_type
     Compiler::push_script(event.pages[0].list,sprintf(" pbResetTempAfterBattle()"))
     #  - add method to remove this PokeEvent from map
     if !$MapFactory
@@ -722,7 +717,7 @@ def ow_sprite_filename(species, form = 0, gender = 0, shiny = false, shadow = fa
   return fname
 end
 
-class PokemonTemp
+class Game_Temp
   attr_accessor :VOWERoamEncounter
   attr_accessor :VOWERoamerIndex
   attr_accessor :VOWENextBattleBGM
@@ -735,29 +730,29 @@ end
 # overworld pokemon
 #===============================================================================
 def pbStoreTempForBattle()
-  $PokemonTemp.VOWERoamEncounter = $PokemonGlobal.roamEncounter
-  $PokemonTemp.VOWERoamerIndex = $PokemonTemp.roamerIndex
-  $PokemonTemp.VOWENextBattleBGM = $PokemonGlobal.nextBattleBGM 
-  $PokemonTemp.VOWEForceSingleBattle = $PokemonTemp.forceSingleBattle
-  $PokemonTemp.VOWEEncounterType = $PokemonTemp.encounterType
+  $game_temp.VOWERoamEncounter = $PokemonGlobal.roamEncounter
+  $game_temp.VOWERoamerIndex = $game_temp.roamer_index_for_encounter
+  $game_temp.VOWENextBattleBGM = $PokemonGlobal.nextBattleBGM 
+  $game_temp.VOWEForceSingleBattle = $game_temp.force_single_battle
+  $game_temp.VOWEEncounterType = $game_temp.encounter_type
 end
 
 #===============================================================================
 # adding new Method to reset temporary data after battling overworld back to before
 #===============================================================================
 def pbResetTempAfterBattle()
-  $PokemonGlobal.roamEncounter = $PokemonTemp.VOWERoamEncounter
-  $PokemonTemp.roamerIndex = $PokemonTemp.VOWERoamerIndex
-  $PokemonGlobal.nextBattleBGM = $PokemonTemp.VOWENextBattleBGM 
-  $PokemonTemp.forceSingleBattle = $PokemonTemp.VOWEForceSingleBattle
-  $PokemonTemp.encounterType = $PokemonTemp.VOWEEncounterType
+  $PokemonGlobal.roamEncounter = $game_temp.VOWERoamEncounter
+  $game_temp.roamer_index_for_encounter = $game_temp.VOWERoamerIndex
+  $PokemonGlobal.nextBattleBGM = $game_temp.VOWENextBattleBGM 
+  $game_temp.force_single_battle = $game_temp.VOWEForceSingleBattle
+  $game_temp.encounter_type = $game_temp.VOWEEncounterType
 end
 
 #===============================================================================
 # adding new Method pbCheckBattleAllowed to check if battling water pokemon from ground are allowed
 #===============================================================================
 def pbCheckBattleAllowed()
-  encType = GameData::EncounterType.try_get($PokemonTemp.encounterType)
+  encType = GameData::EncounterType.try_get($game_temp.encounter_type)
   #the pokemon encounter battle won't happen if it is in the water and the player is not surfing
   return false if !$PokemonGlobal.surfing && encType.type == :water && !VisibleEncounterSettings::BATTLE_WATER_FROM_GROUND
   return true
@@ -768,22 +763,15 @@ end
 #===============================================================================
 def pbSingleOrDoubleWildBattle(map_id,x,y,pokemon)
   if $PokemonEncounters.have_double_wild_battle_on_tile?(x,y,map_id)
-      encounter2 = $PokemonEncounters.choose_wild_pokemon($PokemonTemp.encounterType)
-      encounter2 = EncounterModifier.trigger(encounter2)
+      encounter2 = $PokemonEncounters.choose_wild_pokemon($game_temp.encounter_type)
+      EventHandlers.trigger(:on_wild_species_chosen, encounter2)
       setBattleRule("double")
-      decision = pbWildBattleCore(pokemon, encounter2)
+      WildBattle.start(pokemon, encounter2, can_override: true)
   else
-    species = pokemon.species
-    level = pokemon.level
-    # Potentially call a different pbWildBattle-type method instead (for roaming
-    # Pokémon, Safari battles, Bug Contest battles)
-    handled = [nil]
-    Events.onWildBattleOverride.trigger(nil,species,level,handled)
-    return handled[0] if handled[0]!=nil
-    decision = pbWildBattleCore(pokemon) # Perform the battle
-    Events.onWildBattleEnd.trigger(nil,species,level,decision) # Used by the Poké Radar to update/break the chain
+    WildBattle.start(pokemon, can_override: true)
   end
-  return (decision!=2 && decision!=5) # Return false if the player lost or drew the battle, and true if any other result
+  $game_temp.encounter_type = nil
+  $game_temp.encounter_triggered = true
 end
 
 #===============================================================================
@@ -918,42 +906,20 @@ end
           #########################################################
 
 #===============================================================================
-# Adding Event OnWildPokemonCreateForSpawning to Module Events in Script PField_Field.
+# introduces EventHandlers
+# :on_wild_pokemon_created_for_spawning_end (used for roamer)
+# :on_wild_pokemon_created_for_spawning (nessessary?)
 # This Event is triggered  when a new pokemon spawns. Use this Event instead of OnWildPokemonCreate
 # if you want to add a new procedure that modifies a pokemon on spawning 
 # but not on creation while going into battle with an already spawned pokemon.
 #Note that OnPokemonCreate is also triggered when a pokemon is created for spawning,
 #But OnPokemonCreateForSpawning is not triggered when a pokemon is created in other situations than for spawning
 #===============================================================================
-module Events
-  @@OnWildPokemonCreateForSpawning          = Event.new
-  # Triggers whenever a wild Pokémon is created for spawning
-  # Parameters: 
-  # e[0] - Pokémon being created for spawning
-  def self.onWildPokemonCreateForSpawning; @@OnWildPokemonCreateForSpawning; end
-  def self.onWildPokemonCreateForSpawning=(v); @@OnWildPokemonCreateForSpawning = v; end  
-end
 
 #-------------------------------------------------------------------------------
 # adding a process to the EncounterModifier TriggerEncounterEnd For roaming
 # encounters. We have to set roamed_already to true after one roamer spawned.
-# Possible PROBLEM: EncounterEnd has already registered the process that sets
-#    $PokemonTemp.roamerIndex = nil
-# Thus we define a specific TriggerEncounterEndSpawn for spawned encounters. 
 #-------------------------------------------------------------------------------
-module EncounterModifier
-  @@procsEndSpawn = []
-
-  def self.registerEncounterEndSpawn(p)
-    @@procsEndSpawn.push(p)
-  end
-    
-  def self.triggerEncounterEndSpawn()
-    for prc in @@procsEndSpawn
-      prc.call()
-    end
-  end
-end
 
 #===============================================================================
 # adds new parameter battlingSpawnedPokemon to the class PokemonGlobalMetadata.
@@ -990,7 +956,7 @@ end
 # method that will not occur in the player's current position.
 #-------------------------------------------------------------------------------
 def pbRoamingMethodAllowed(roamer_method)
-  enc_type = $PokemonTemp.encounterType # $PokemonTemp.encounterType stores the encounter type of the chosen tile
+  enc_type = $game_temp.encounter_type # $game_temp.encounter_type stores the encounter type of the chosen tile
   type = GameData::EncounterType.get(enc_type).type
   case roamer_method
   when 0   # Any step-triggered method (except Bug Contest)
@@ -1008,33 +974,14 @@ def pbRoamingMethodAllowed(roamer_method)
 end
 
 #-------------------------------------------------------------------------------
-# adding this process to the Event onWildPokemonCreateForSpawning to for roaming
-# pokemon
-#-------------------------------------------------------------------------------
-Events.onWildPokemonCreateForSpawning += proc { |_sender,_e|
-  pokemon = _e[0]
-  next if !$PokemonGlobal.roamEncounter || $PokemonTemp.roamerIndex.nil?
-  # Get the roaming Pokémon to encounter; generate it based on the species and
-  # level if it doesn't already exist
-  idxRoamer = $PokemonTemp.roamerIndex
-  if !$PokemonGlobal.roamPokemon[idxRoamer] ||
-     !$PokemonGlobal.roamPokemon[idxRoamer].is_a?(Pokemon)
-    $PokemonGlobal.roamPokemon[idxRoamer] = pokemon
-  end
-}
-
-#-------------------------------------------------------------------------------
 # adding a process to the EncounterModifier TriggerEncounterEnd For roaming
 # encounters. We have to set roamed_already to true after one roamer spawned.
-# Possible PROBLEM: EncounterEnd has already registered the process that sets
-#    $PokemonTemp.roamerIndex = nil
-# Thus we define a specific TriggerEncounterEndSpawn for spawned encounters. 
-#-------------------------------------------------------------------------------
-EncounterModifier.registerEncounterEndSpawn(proc {
-  if $PokemonTemp.roamerIndex != nil &&  $PokemonGlobal.roamEncounter != nil
-   $PokemonGlobal.roamEncounter = nil
-   $PokemonGlobal.roamedAlready = true
-  end
+#-------------------------------------------------------------------------------  
+EventHandlers.add(:on_wild_pokemon_created_for_spawning_end, :roamer_spawned, proc{
+  if $game_temp.roamer_index_for_encounter != nil &&  $PokemonGlobal.roamEncounter != nil
+    $PokemonGlobal.roamEncounter = nil
+    $PokemonGlobal.roamedAlready = true
+    $game_temp.roamer_index_for_encounter = nil
+   end
+ 
 })
-  
-
