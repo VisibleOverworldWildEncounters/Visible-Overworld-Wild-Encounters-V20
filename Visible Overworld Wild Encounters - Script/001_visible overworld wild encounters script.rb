@@ -361,7 +361,7 @@ end
 # new method pbSpawnOnStepTaken working almost like pbBattleOnStepTaken
 #===============================================================================
 def pbSpawnOnStepTaken(repel_active)
-  return if $Trainer.able_pokemon_count == 0 #check if trainer has pokemon
+  return if $player.able_pokemon_count == 0 #check if trainer has pokemon
   #First we choose a tile near the player
   pos = pbChooseTileOnStepTaken
   return if !pos
@@ -540,7 +540,7 @@ class PokemonEncounters
     return false if $game_temp.force_single_battle
     return false if pbInSafari?
     return true if $PokemonGlobal.partner
-    return false if $Trainer.able_pokemon_count <= 1
+    return false if $player.able_pokemon_count <= 1
     if $MapFactory
       terrainTag = $MapFactory.getTerrainTag(map_id,x,y)
     else
