@@ -1,6 +1,6 @@
 Name         = Automatic Spawning - Overworld Encounters Add On
 Version      = 1.2
 Essentials   = 20
-Requires     = Visible Overworld Wild Encounters,19.1.0.2
+Requires     = Visible Overworld Wild Encounters,20.0.0.1
 Link         = https://www.pokecommunity.com/showthread.php?t=429019              
 Credits      = derFischae
