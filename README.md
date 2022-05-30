@@ -33,6 +33,9 @@ Installation as simple as it can be.
 4. Install Add-Ons (the other folders): There are a lot of Add-Ons and parameter settings for your personal optimal solution. So, Copy Add-Ons in your "/plugins/" folder and edit parameters in settings of that Add-Ons to your liking. Some Add-On and parameter combinations can produce lag, e.g. a high spawning rate without a spawning cap, or e.g. "NO_OF_CHOSEN_TILES=0" (or too high) when having other scripts like Pokemon Following.
 5. Enjoy!
 
+### HELP AND MORE 
+If you need help, found a bug or search for more modifications then go to https://www.pokecommunity.com/showthread.php?t=429019
+
 ### ADVANCED FEATURES
 - Set the size of the area around the player where pokemon can spawn
 - Choose whether encounters occure on all terrains or only on the terrain of the player
