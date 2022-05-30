@@ -31,21 +31,17 @@ module VisibleEncounterSettings
 end
 
 #===============================================================================
-# Overriding the update method of the class Game_Map in script section Game_Map
+# adding method to event :on_frame_update for automatic sapwning
 #===============================================================================
-class Game_Map
-  
-  alias original_update update
-  def update
-    original_update
-    return unless $player
-    return if $PokemonGlobal.repel>0
+EventHandlers.add(:on_frame_update, :automatic_spawning,
+  proc {
+    next if !$player
     repel_active = ($PokemonGlobal.repel > 0)
-    #repel = ($PokemonGlobal.repel>0)
+    next if repel_active
     $framecounter = 0 if !$framecounter 
     $framecounter = $framecounter + 1
     return unless $framecounter == VisibleEncounterSettings::AUTO_SPAWN_SPEED
     $framecounter = 0
     pbSpawnOnStepTaken(repel_active) if !pbBattleOrSpawnOnStepTaken(repel_active) 
-  end
-end
+  }
+)
