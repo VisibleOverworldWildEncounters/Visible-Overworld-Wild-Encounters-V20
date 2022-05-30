@@ -14,11 +14,11 @@
 # percentage in the parameter
 #       VISIBLE_ENCOUNTER_PROBABILITY (see below)
 # If VISIBLE_ENCOUNTER_PROBABILITY > 0 then overworld spawning will not use the
-# default PEv19.1 encounter chance calculator anymore.
+# default PEv20 encounter chance calculator anymore.
 
 
 module VisibleEncounterSettings
-  VISIBLE_ENCOUNTER_PROBABILITY = 0 # default 0
+  VISIBLE_ENCOUNTER_PROBABILITY = 80 # default 0
   # The PokeEvent will spawn according to this probability if the value is greater than 0
   # <= 0           - means only using the default PEv19.1 encounter chance calculator
   # > 0 (1..100)   - means using this probabilty out of 100 instead of normal chance
@@ -36,7 +36,7 @@ class PokemonEncounters
         raise ArgumentError.new(_INTL("Encounter type {1} does not exist", enc_type))
       end
       return false if $game_system.encounter_disabled
-      return false if !$Trainer
+      return false if !$player
       return false if $DEBUG && Input.press?(Input::CTRL)
       return false if !(rand(100) < VisibleEncounterSettings::VISIBLE_ENCOUNTER_PROBABILITY)
       return true
