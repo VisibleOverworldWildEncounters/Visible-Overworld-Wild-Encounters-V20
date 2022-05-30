@@ -69,7 +69,7 @@ end
 alias original_pbPlaceEncounter pbPlaceEncounter
 def pbPlaceEncounter(x,y,pokemon)
   #Appear Animation
-  encType = GameData::EncounterType.try_get($PokemonTemp.encounterType)
+  encType = GameData::EncounterType.try_get($game_temp.encounter_type)
   if !encType
     # Show default animation
     $scene.spriteset.addUserAnimation(VisibleEncounterSettings::DEFAULT_RUSTLE_ANIMATION_ID,x,y,true,1)
