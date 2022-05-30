@@ -47,16 +47,16 @@ If you need help, found a bug or search for more modifications then go to https:
 - You can check during the events :on_wild_species_chosen and :on_wild_pokemon_created if the pokemon is created for spawning on the map or created for a different reason with the Global variable $PokemonGlobal.creatingSpawningPokemon
 - If you want to add a procedure that modifies a pokemon only for spawning but not before battling then you can use the Event :on_wild_pokemon_created_for_spawning
 ### ADDITIONAL FEATURES BY ADD-ONS
+- Additional Animations Add-On
+  - manage different appear animations of overworld spawning encounters depending on encounter type and pokemon properties
+  - Play animations while PokeEvent is visible on screen, such as a shiny animation
+  - See also the animations by TrankerGolD for aggressive encounters, water encounters, and shiny encounters https://www.pokecommunity.com/showpost.php?p=10395100&postcount=383
 - Aggressive Encounters Add-On
   - introduces aggressive encounters, which are pokemon that chase the player after spawning
   - aggressive encounters may only start to chase if the player comes them to close
   - set the move speed, move frequency and move type of aggressive pokemon
   - aggressive ecounters are restricted to player movements
   - add animations to aggressive encounters. See Additional Animations -Add On and TrankerGolD's animations for aggressive encounters at https://www.pokecommunity.com/showpost.php?p=10395100&postcount=383 to include spawning animations in your game
-- Additional Animations Add-On
-  - manage different appear animations of overworld spawning encounters depending on encounter type and pokemon properties
-  - Play animations while PokeEvent is visible on screen, such as a shiny animation
-  - See also the animations by TrankerGolD for aggressive encounters, water encounters, and shiny encounters https://www.pokecommunity.com/showpost.php?p=10395100&postcount=383
 - Different Spawn And Normal Encounters (like in Pokemon Sword/Shield) Add-On
   - Introduces Overworld Encounter Types you can set in your encounters.txt PBS-file.
   - This allows you to define different encounters for overworld spawning and instant battling on the same map.
