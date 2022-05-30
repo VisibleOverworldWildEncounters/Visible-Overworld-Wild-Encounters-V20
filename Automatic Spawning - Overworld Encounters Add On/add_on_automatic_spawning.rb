@@ -38,7 +38,7 @@ class Game_Map
   alias original_update update
   def update
     original_update
-    return unless $Trainer
+    return unless $player
     return if $PokemonGlobal.repel>0
     repel_active = ($PokemonGlobal.repel > 0)
     #repel = ($PokemonGlobal.repel>0)
