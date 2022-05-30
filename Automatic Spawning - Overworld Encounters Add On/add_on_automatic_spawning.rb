@@ -40,7 +40,7 @@ EventHandlers.add(:on_frame_update, :automatic_spawning,
     next if repel_active
     $framecounter = 0 if !$framecounter 
     $framecounter = $framecounter + 1
-    return unless $framecounter == VisibleEncounterSettings::AUTO_SPAWN_SPEED
+    next unless $framecounter == VisibleEncounterSettings::AUTO_SPAWN_SPEED
     $framecounter = 0
     pbSpawnOnStepTaken(repel_active) if !pbBattleOrSpawnOnStepTaken(repel_active) 
   }
