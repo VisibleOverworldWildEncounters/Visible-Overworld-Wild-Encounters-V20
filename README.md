@@ -78,7 +78,7 @@ If you need help, found a bug or search for more modifications then go to https:
   - Increase the average spawning time of pokemon by setting MAX_ENCOUNTER_REDUCED larger than zero in the settings section of this script
 - Fixed Spawn Probability Add-On
   - Define your own overworld spawn chance in Percentage
-  - Spawn chance becomes independent from the default PEv19.1 encounter chance calculator
+  - Spawn chance becomes independent from the default PEv20 encounter chance calculator
 - Variable Spawn/Normal Encounter Proportion During Game Add-On
   - Adds automatical spawning after time beside the default spawning while moving the player
   - Set the time period of automatic spawning
