@@ -17,7 +17,7 @@
 # [*] The Spawn probability of the first encounter and later ones are similar.
 # [*] Spawning does not interact with the encounter chance for normal encounters.
 # [*] Increase the average spawning time of pokeon by setting MAX_ENCOUNTER_REDUCED larger than zero in the settings section of this script
-s
+
 # SETTINGS
 module VisibleEncounterSettings
   #------------- MAXIMAL NUMBER OF ENCOUNTERS WITH REDUCED ENCOUNTER PROBABILITY ------------ 
@@ -39,7 +39,7 @@ class PokemonEncounters
       raise ArgumentError.new(_INTL("Encounter type {1} does not exist", enc_type))
     end
     return false if $game_system.encounter_disabled
-    return false if !$Trainer
+    return false if !$player
     return false if $DEBUG && Input.press?(Input::CTRL)
     # Check if enc_type has a defined step chance/encounter table
     return false if !@step_chances[enc_type] || @step_chances[enc_type] == 0
@@ -61,7 +61,7 @@ class PokemonEncounters
       encounter_chance *= 1.5 if $PokemonMap.whiteFluteUsed
       min_steps_needed /= 2 if $PokemonMap.whiteFluteUsed
     end
-    first_pkmn = $Trainer.first_pokemon
+    first_pkmn = $player.first_pokemon
     if first_pkmn
       case first_pkmn.item_id
       when :CLEANSETAG
@@ -111,6 +111,6 @@ class PokemonEncounters
   end
 end
 
-Events.onWildPokemonCreateForSpawning+=proc {|sender,e|
+EventHandlers.add(:on_wild_pokemon_created_for_spawning, :reset_ow_step_count, proc{
   $PokemonEncounters.reset_ow_step_count
-}
+})
