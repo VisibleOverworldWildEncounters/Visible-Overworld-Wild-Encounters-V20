@@ -122,11 +122,12 @@ end
 # adding this process to the Event onWildPokemonCreateForSpawning to distinguish 
 # between aggressive encounters and non-aggressive ones
 #-------------------------------------------------------------------------------
-Events.onWildPokemonCreateForSpawning += proc { |_sender,_e|
-  pokemon = _e[0]
-  encType = GameData::EncounterType.try_get($PokemonTemp.encounterType)
-  pokemon.aggressive?(encType)
-}
+EventHandlers.add(:on_wild_pokemon_created_for_spawning, :aggressive_pokemon_spawn,
+  proc { |pkmn|
+    encType = GameData::EncounterType.try_get($game_temp.encounter_type)
+    pkmn.aggressive?(encType)
+  }
+)
 
 #===============================================================================
 # We override the method "pbOnStepTaken" in the overworld encounters script it
@@ -142,6 +143,7 @@ def pbOnStepTaken(eventTriggered)
         event.move_frequency = VisibleEncounterSettings::AGG_ENC_SWITCH_MOVEMENT[1] if VisibleEncounterSettings::AGG_ENC_SWITCH_MOVEMENT[1]
         event.move_type = VisibleEncounterSettings::AGG_ENC_SWITCH_MOVEMENT[2] if VisibleEncounterSettings::AGG_ENC_SWITCH_MOVEMENT[2]
         $scene.spriteset.addUserAnimation(VisibleEncounterSettings::AGG_ANIMATIONS[0],event.x,event.y,true,1)
+        event.pokemon.chasing = true 
       end
     end
   end
