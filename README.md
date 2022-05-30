@@ -91,6 +91,8 @@ Installation as simple as it can be.
   - You need to put a graphic, named "ghost.png", in your "/Graphics/Characters/" folder of your project. This graphic is not provided here, but maybe you can easily find some resource, for example search for "shiny missingNo [Ghost Form]".
 
 ### CHANGELOG
+NEW FEATURES FROM VERSION 20.0.0.1 FOR PEv20:
+ - updated v19.1.0.4 to make it compatible with PEv20
 NEW FEATURES FROM VERSION 19.1.0.4 FOR PEv19:
  - rearranged aggressive encounters as an Add On
 NEW FEATURES FROM VERSION 19.1.0.1 FOR PEv19:
