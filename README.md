@@ -80,8 +80,8 @@ If you need help, found a bug or search for more modifications then go to https:
   - Define your own overworld spawn chance in Percentage
   - Spawn chance becomes independent from the default PEv20 encounter chance calculator
 - Variable Spawn/Normal Encounter Proportion During Game Add-On
-  - Adds automatical spawning after time beside the default spawning while moving the player
-  - Set the time period of automatic spawning
+  - let's you change the percentage between overworld spawning pokemon and normal encounters during playthrough
+  - You can get and change the current instant battle probability by using getInstantChance and setInstantChance(value) in an event on the map.
 - Automatic Spawning Add-On
   - Choose whether pokemon spawn automatically or only while moving the player
   - Set the speed of automatic spawning
