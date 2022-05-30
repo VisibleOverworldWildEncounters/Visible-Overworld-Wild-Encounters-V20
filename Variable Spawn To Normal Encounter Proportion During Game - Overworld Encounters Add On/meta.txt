@@ -1,5 +1,6 @@
 Name         = Variable Spawn To Normal Encounter Proportion During Game - Overworld Encounters Add On
 Version      = 1.1
+Essentials   = 20
 Requires     = Visible Overworld Wild Encounters,19.1.0.2
 Link         = https://www.pokecommunity.com/showthread.php?t=429019              
 Credits      = derFischae
