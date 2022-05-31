@@ -11,11 +11,11 @@
 
 # INSTALLATION:
 # 1) Place the folder of this plugin in your plugins folder
-# 2) Open the file add_on_automatic_spawning.rb and change the parameter AUTO_SPAWN_SPEED to your liking in the settings section.
+# 2) Open the file add_on_automatic_spawning.rb and change the parameter TRANSFORMS to your liking in the settings section.
 
 
 #===============================================================================
-# Settings
+#    Settings
 #===============================================================================
 module VisibleEncounterSettings
   TRANSFORMS = [                      # default
@@ -31,6 +31,11 @@ module VisibleEncounterSettings
   # species names    - means the species will have random overworld appearence of one of that following species.
 end
 
+
+#===============================================================================
+#    Script
+#===============================================================================
+
 #-------------------------------------------------------------------------------
 # Overwriting method ow_sprite_filename to include ditto transform 
 #-------------------------------------------------------------------------------
@@ -39,7 +44,7 @@ def ow_sprite_filename(species, form = 0, gender = 0, shiny = false, shadow = fa
   for transform in VisibleEncounterSettings::TRANSFORMS
     next if transform[0] != species.to_sym
     if transform.size == 1
-      encounter = $PokemonEncounters.choose_wild_pokemon($PokemonTemp.encounterType)
+      encounter = $PokemonEncounters.choose_wild_pokemon($game_temp.encounter_type)
       return ditto_ow_sprite_filename(encounter[0].to_s, form, gender, shiny, shadow)
     elsif transform.size == 2 && !transform[1]
       keys = GameData::Species.keys
