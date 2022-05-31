@@ -1,6 +1,6 @@
 
 #=======================================================================
-# ADD ON: pokemon are not there after saving and loading up your game
+# ADD ON: Remove all PokeEvent on load_save/transfer
 # by TrankerGolD 
 #=======================================================================
 
@@ -25,7 +25,7 @@ def pbRemovePokeEvents
   if $MapFactory
     for map in $MapFactory.maps
       for event in map.events.values
-        if event.name.include? "vanishingEncounter"
+        if event.is_a?(Game_PokeEvent)
           event.removeThisEventfromMap
         end
       end
@@ -36,8 +36,29 @@ end
 #Remove spawned events in current map
 def pbRemovePokeEventsInMap
   $game_map.events.values.each { |event|
-    if event.name.include? "vanishingEncounter"
+    if event.is_a?(Game_PokeEvent)
       event.removeThisEventfromMap
     end
   }
 end
+
+#Overide load_map
+module Game
+  class << self
+    alias original_load_map load_map
+  end
+  def self.load_map
+    original_load_map
+    pbRemovePokeEvents
+  end
+end
+
+#Overide transfer_player (optional)
+class Scene_Map
+  alias original_transfer_player transfer_player
+  def transfer_player(cancelVehicles=true)
+    pbRemovePokeEvents
+    original_transfer_player(cancelVehicles)
+  end
+end
+
