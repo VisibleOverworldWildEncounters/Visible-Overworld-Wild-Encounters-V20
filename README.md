@@ -2,7 +2,7 @@
 
 * Visible Overworld Wild Encounters Version 20.0.0.1 for PEv20 - by derFischae (Credits if used please)
 
-This script is for Pokémon Essentials v20 (for short PEv20). UPDATED TO VERSION 20.0.0.1 FOR PEv20.
+This script is for Pokémon Essentials v20 and v20.1 (for short PEv20). UPDATED TO VERSION 20.0.0.1 FOR PEv20.
 
 As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters pop up on the overworld, they move around and you can start the battle with them simply by moving to the pokemon. Clearly, you also can omit the battle by circling around them.
 
