@@ -1,8 +1,8 @@
 # Visible-Overworld-Wild-Encounters
 
-* Visible Overworld Wild Encounters Version 20.0.0.1 for PEv20 - by derFischae (Credits if used please)
+* Visible Overworld Wild Encounters Version 20.0.0.2 for PEv20 - by derFischae (Credits if used please)
 
-This script is for Pokémon Essentials v20 and v20.1 (for short PEv20). UPDATED TO VERSION 20.0.0.1 FOR PEv20.
+This script is for Pokémon Essentials v20 and v20.1 (for short PEv20). UPDATED TO VERSION 20.0.0.2 FOR PEv20.
 
 As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters pop up on the overworld, they move around and you can start the battle with them simply by moving to the pokemon. Clearly, you also can omit the battle by circling around them.
 
@@ -98,6 +98,9 @@ If you need help, found a bug or search for more modifications then go to https:
   - You need to put a graphic, named "ghost.png", in your "/Graphics/Characters/" folder of your project. This graphic is not provided here, but maybe you can easily find some resource, for example search for "shiny missingNo [Ghost Form]".
 
 ### CHANGELOG
+NEW FEATURES FROM VERSION 20.0.0.2 FOR PEv20:
+ - removed bug concerning renaming $MapFactory in PEv20
+
 NEW FEATURES FROM VERSION 20.0.0.1 FOR PEv20:
  - updated v19.1.0.4 to make it compatible with PEv20
 
