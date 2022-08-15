@@ -2,12 +2,12 @@
 
   #====================================================================#
   #                                                                    #
-  #     Visible Overworld Wild Encounters V20.0.0.1 for PEv20          #
+  #     Visible Overworld Wild Encounters V20.0.0.2 for PEv20          #
   #                         - by derFischae (Credits if used please)   #
   #                                                                    #
   #====================================================================#
 
-# This script is for Pokémon Essentials v20 (for short PEv20). UPDATED TO VERSION 20.0.0.1.
+# This script is for Pokémon Essentials v20 (for short PEv20). UPDATED TO VERSION 20.0.0.2.
 
 # As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters
 # pop up on the overworld, they move around and you can start the battle with
@@ -119,6 +119,8 @@
 #             CHANGELOG
 #===============================================================================
 
+# NEW FEATURES FROM VERSION 20.0.0.1 FOR PEv19:
+#  - removed bug concerning renaming $MapFactory in PEv20
 # NEW FEATURES FROM VERSION 20.0.0.1 FOR PEv19:
 #  - updated version 19.1.0.4 to make it compatible with PEv20
 # NEW FEATURES FROM VERSION 19.1.0.4 FOR PEv19:
@@ -467,11 +469,11 @@ end
 def pbPlaceEncounter(x,y,pokemon)
   # place event with random movement with overworld sprite
   # We define the event, which has the sprite of the pokemon and activates the wildBattle on touch
-  if !$MapFactory
+  if !$map_factory
     $game_map.spawnPokeEvent(x,y,pokemon)
   else
     mapId = $game_map.map_id
-    spawnMap = $MapFactory.getMap(mapId)
+    spawnMap = $map_factory.getMap(mapId)
     spawnMap.spawnPokeEvent(x,y,pokemon)
   end
   pbPlayCryOnOverworld(pokemon.species, pokemon.form) # Play the pokemon cry of encounter
@@ -541,8 +543,8 @@ class PokemonEncounters
     return false if pbInSafari?
     return true if $PokemonGlobal.partner
     return false if $player.able_pokemon_count <= 1
-    if $MapFactory
-      terrainTag = $MapFactory.getTerrainTag(map_id,x,y)
+    if $map_factory
+      terrainTag = $map_factory.getTerrainTag(map_id,x,y)
     else
       terrainTag = $game_map.terrain_tag(x,y)
     end
@@ -633,11 +635,11 @@ class Game_Map
     #  - set $PokemonGlobal.battlingSpawnedPokemon = true
     Compiler::push_script(event.pages[0].list,sprintf(" $PokemonGlobal.battlingSpawnedPokemon = true",1))    
     #  - add method pbSingleOrDoubleWildBattle for the battle
-    if !$MapFactory
+    if !$map_factory
       parameter = " pbSingleOrDoubleWildBattle( $game_map.events[#{key_id}].map.map_id, $game_map.events[#{key_id}].x, $game_map.events[#{key_id}].y, $game_map.events[#{key_id}].pokemon )"
     else
       mapId = $game_map.map_id
-      parameter = " pbSingleOrDoubleWildBattle( $MapFactory.getMap("+mapId.to_s+").events[#{key_id}].map.map_id, $MapFactory.getMap("+mapId.to_s+").events[#{key_id}].x, $MapFactory.getMap("+mapId.to_s+").events[#{key_id}].y, $MapFactory.getMap("+mapId.to_s+").events[#{key_id}].pokemon )"
+      parameter = " pbSingleOrDoubleWildBattle( $map_factory.getMap("+mapId.to_s+").events[#{key_id}].map.map_id, $map_factory.getMap("+mapId.to_s+").events[#{key_id}].x, $map_factory.getMap("+mapId.to_s+").events[#{key_id}].y, $map_factory.getMap("+mapId.to_s+").events[#{key_id}].pokemon )"
     end
     Compiler::push_script(event.pages[0].list,sprintf(parameter),1)
     #   - set $PokemonGlobal.battlingSpawnedPokemon = false
@@ -648,11 +650,11 @@ class Game_Map
     #    $PokemonGlobal.roamEncounter, $game_temp.roamer_index_for_encounter, $PokemonGlobal.nextBattleBGM, $game_temp.force_single_battle, $game_temp.encounter_type
     Compiler::push_script(event.pages[0].list,sprintf(" pbResetTempAfterBattle()"))
     #  - add method to remove this PokeEvent from map
-    if !$MapFactory
+    if !$map_factory
       parameter = "$game_map.removeThisEventfromMap(#{key_id})"
     else
       mapId = $game_map.map_id
-      parameter = "$MapFactory.getMap("+mapId.to_s+").removeThisEventfromMap(#{key_id})"
+      parameter = "$map_factory.getMap("+mapId.to_s+").removeThisEventfromMap(#{key_id})"
     end
     Compiler::push_script(event.pages[0].list,sprintf(parameter),1)
     #  - finally push end command
@@ -828,7 +830,7 @@ class Game_PokeEvent < Game_Event
   
   alias original_increase_steps increase_steps
   def increase_steps
-    if @remaining_steps <= 0 # && self.name=="vanishingEncounter"
+    if @remaining_steps <= 0
       removeThisEventfromMap
     else
       @remaining_steps-=1
@@ -836,6 +838,8 @@ class Game_PokeEvent < Game_Event
     end
   end
   
+  # self.map_id bzw. @map_id
+
   def removeThisEventfromMap
     if $game_map.events.has_key?(@id) and $game_map.events[@id]==self
       if defined?($scene.spritesets)
@@ -849,8 +853,8 @@ class Game_PokeEvent < Game_Event
       end
       $game_map.events.delete(@id)
     else
-      if $MapFactory
-        for map in $MapFactory.maps
+      if $map_factory
+        for map in $map_factory.maps
           if map.events.has_key?(@id) and map.events[@id]==self
             if defined?($scene.spritesets) && $scene.spritesets[self.map_id] && $scene.spritesets[self.map_id].character_sprites
               for sprite in $scene.spritesets[self.map_id].character_sprites
@@ -957,5 +961,37 @@ EventHandlers.add(:on_wild_pokemon_created_for_spawning_end, :roamer_spawned, pr
     $PokemonGlobal.roamedAlready = true
     $game_temp.roamer_index_for_encounter = nil
    end
- 
+})
+
+
+EventHandlers.add(:on_wild_pokemon_created_for_spawning, :evolve_high_leveled_spawning_pokemon, proc { |pkmn| 
+  loop do
+    next if !pkmn || pkmn.egg?
+    new_species = pkmn.check_evolution_on_level_up
+    break if new_species.nil?
+    # Evolve Pokémon if possible
+    pkmn.species = new_species
+    pkmn.calc_stats
+    pkmn.ready_to_evolve = false
+    # See and own evolved species
+    moves_to_learn = []
+    movelist = pkmn.getMoveList
+    movelist.each do |i|
+      next if i[0] != 0 && i[0] != pkmn.level   # 0 is "learn upon evolution"
+      moves_to_learn.push(i[1])
+    end
+    # Learn moves upon evolution for evolved species
+    moves_to_learn.each do |move|
+      # Pokémon already knows the move
+      next if pkmn.hasMove?(move)
+      # Pokémon has space for the new move; just learn it
+      if pkmn.numMoves < Pokemon::MAX_MOVES
+        pkmn.learn_move(move)
+        next
+      end
+      # Pokémon already knows the maximum number of moves; try to forget one to learn the new move
+      forgetMove =  rand(Pokemon::MAX_MOVES) 
+      pkmn.moves[forgetMove] = Pokemon::Move.new(move)   # Replaces current/total PP
+    end
+  end
 })
