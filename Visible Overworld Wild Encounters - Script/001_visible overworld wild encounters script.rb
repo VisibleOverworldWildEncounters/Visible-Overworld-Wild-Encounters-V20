@@ -962,36 +962,3 @@ EventHandlers.add(:on_wild_pokemon_created_for_spawning_end, :roamer_spawned, pr
     $game_temp.roamer_index_for_encounter = nil
    end
 })
-
-
-EventHandlers.add(:on_wild_pokemon_created_for_spawning, :evolve_high_leveled_spawning_pokemon, proc { |pkmn| 
-  loop do
-    next if !pkmn || pkmn.egg?
-    new_species = pkmn.check_evolution_on_level_up
-    break if new_species.nil?
-    # Evolve Pokémon if possible
-    pkmn.species = new_species
-    pkmn.calc_stats
-    pkmn.ready_to_evolve = false
-    # See and own evolved species
-    moves_to_learn = []
-    movelist = pkmn.getMoveList
-    movelist.each do |i|
-      next if i[0] != 0 && i[0] != pkmn.level   # 0 is "learn upon evolution"
-      moves_to_learn.push(i[1])
-    end
-    # Learn moves upon evolution for evolved species
-    moves_to_learn.each do |move|
-      # Pokémon already knows the move
-      next if pkmn.hasMove?(move)
-      # Pokémon has space for the new move; just learn it
-      if pkmn.numMoves < Pokemon::MAX_MOVES
-        pkmn.learn_move(move)
-        next
-      end
-      # Pokémon already knows the maximum number of moves; try to forget one to learn the new move
-      forgetMove =  rand(Pokemon::MAX_MOVES) 
-      pkmn.moves[forgetMove] = Pokemon::Move.new(move)   # Replaces current/total PP
-    end
-  end
-})
