@@ -23,9 +23,10 @@ module VisibleEncounterSettings
   #0   - means that there are no aggressive encounters
   #100 - means that all encounter are aggressive
   
-  AGG_EXCEPTIONS = [[:species, :SLOWPOKE],
-                   [:nature, :CALM]
-                  ]
+  AGG_EXCEPTIONS = [
+    [:species, :SLOWPOKE], # means slowpoke will never be aggressive
+    [:nature, :CALM]       # means that pokemon with a calm nature will never be aggressive
+  ]
   # This parameter is used to store which pokemon should never become aggressive.
   # The data is stored as an array of arrays. You can add your own arrays.
   # Each array is of the form [variable, value], where variable
