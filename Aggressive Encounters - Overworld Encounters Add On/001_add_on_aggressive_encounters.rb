@@ -1,4 +1,3 @@
-
 #=======================================================================
 # ADD-ON: Aggressive Encounters
 #=======================================================================
@@ -23,6 +22,16 @@ module VisibleEncounterSettings
   #this is the probability in percent of spawning of an aggressive encounter, that runs to you
   #0   - means that there are no aggressive encounters
   #100 - means that all encounter are aggressive
+  
+  AGG_EXCEPTIONS = [[:species, :SLOWPOKE],
+                   [:nature, :CALM]
+                  ]
+  # This parameter is used to store which pokemon should never become aggressive.
+  # The data is stored as an array of arrays. You can add your own arrays.
+  # Each array is of the form [variable, value], where variable
+  # is a variable or method which does not require parameters of the class Pokemon,
+  # and value is a possible outcome value of variable. 
+  # A pokemon will not become aggressive if value == pokemon.variable.
 
   AGG_ENC_SPAWN_MOVEMENT = [3, 3, 1] # default [3, 5, 3] -  means that aggressive encounters will be faster and run to the player
   # This is used to store the movement data of aggressive encounters. 
@@ -103,6 +112,12 @@ class Pokemon
   #===============================================================================
   def aggressive?(encType)
     return self.aggressive if self.aggressive == true || self.aggressive == false
+    for exception in VisibleEncounterSettings::ENC_EXCEPTIONS do
+      if self.method(exception[0]).call == exception[1]
+        self.aggressive = false
+        return false
+      end
+    end
     encType = GameData::EncounterType.try_get(encType)
     if encType
       #aggressive Pokemon on water only when surfing, and on land when not surfing
