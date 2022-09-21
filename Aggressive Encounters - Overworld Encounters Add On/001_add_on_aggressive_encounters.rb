@@ -113,7 +113,7 @@ class Pokemon
   #===============================================================================
   def aggressive?(encType)
     return self.aggressive if self.aggressive == true || self.aggressive == false
-    for exception in VisibleEncounterSettings::ENC_EXCEPTIONS do
+    for exception in VisibleEncounterSettings::AGG_EXCEPTIONS do
       if self.method(exception[0]).call == exception[1]
         self.aggressive = false
         return false
