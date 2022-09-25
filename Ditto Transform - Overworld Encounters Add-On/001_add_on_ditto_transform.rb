@@ -24,8 +24,8 @@ module VisibleEncounterSettings
     [:SMEARGLE, :BULBASAUR, :PIDGEY]  #       - Smeargle will have the overworld sprite of one of the following pokemon, i.e. bulbasaur and pidgey.
   ]
   # This parameter is used to change the overworld appearence of pokemon such as ditto.
-  # The data is stored as an array of arrays. You can add your own arrays.
-  # The first entry  - is the the species that transforms its overworld appearence.
+  # The data is stored as an array of arrays. You can add your own arrays or change/remove the existing.
+  # The first entry  - is the species that transforms its overworld appearence.
   # No more entries  - means the species have any overworld appearence of encounters of the map where the player is.
   # nil              - means the species will have overworld appearence of any random species.
   # species names    - means the species will have random overworld appearence of one of that following species.
