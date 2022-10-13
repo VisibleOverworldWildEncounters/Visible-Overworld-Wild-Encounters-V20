@@ -83,13 +83,14 @@ VisibleEncounterSettings::Add_Steps_Before_Vanish.push(
   [:aggressive, true, VisibleEncounterSettings::ADD_STEPS_BEFORE_AGG_ENC_VANISH]
 )
 
-if VisibleEncounterSettings::Enc_Spawn_Animations and VisibleEncounterSettings::AGG_ANIMATIONS[1] != nil
+
+if VisibleEncounterSettings.public_instance_methods.include?(:Enc_Spawn_Animations) and VisibleEncounterSettings::AGG_ANIMATIONS[1] != nil
   VisibleEncounterSettings::Enc_Spawn_Animations.push(
     [:aggressive, true, VisibleEncounterSettings::AGG_ANIMATIONS[1]]
   )
 end
 
-if VisibleEncounterSettings::Perma_Enc_Animations and VisibleEncounterSettings::AGG_ANIMATIONS[2] != nil
+if VisibleEncounterSettings.public_instance_methods.include?(:Perma_Enc_Animations) and VisibleEncounterSettings::AGG_ANIMATIONS[2] != nil
   VisibleEncounterSettings::Perma_Enc_Animations.push(
     [:aggressive, true, VisibleEncounterSettings::AGG_ANIMATIONS[2]] 
   )
