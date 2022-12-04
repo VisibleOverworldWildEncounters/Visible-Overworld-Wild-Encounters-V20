@@ -73,7 +73,6 @@ module VisibleEncounterSettings
 
 end
 
-
 # THE SCRIPT
 VisibleEncounterSettings::Enc_Movements.push(
   [:aggressive, true, VisibleEncounterSettings::AGG_ENC_SPAWN_MOVEMENT[0], VisibleEncounterSettings::AGG_ENC_SPAWN_MOVEMENT[1], VisibleEncounterSettings::AGG_ENC_SPAWN_MOVEMENT[2]]
@@ -83,19 +82,17 @@ VisibleEncounterSettings::Add_Steps_Before_Vanish.push(
   [:aggressive, true, VisibleEncounterSettings::ADD_STEPS_BEFORE_AGG_ENC_VANISH]
 )
 
-
-if VisibleEncounterSettings.public_instance_methods.include?(:Enc_Spawn_Animations) and VisibleEncounterSettings::AGG_ANIMATIONS[1] != nil
+if VisibleEncounterSettings.const_defined?(:Enc_Spawn_Animations) and VisibleEncounterSettings::AGG_ANIMATIONS[1] != nil
   VisibleEncounterSettings::Enc_Spawn_Animations.push(
     [:aggressive, true, VisibleEncounterSettings::AGG_ANIMATIONS[1]]
   )
 end
 
-if VisibleEncounterSettings.public_instance_methods.include?(:Perma_Enc_Animations) and VisibleEncounterSettings::AGG_ANIMATIONS[2] != nil
+if VisibleEncounterSettings.const_defined?(:Perma_Enc_Animations) and VisibleEncounterSettings::AGG_ANIMATIONS[2] != nil
   VisibleEncounterSettings::Perma_Enc_Animations.push(
     [:aggressive, true, VisibleEncounterSettings::AGG_ANIMATIONS[2]] 
   )
 end
-
 
 class Game_PokeEvent < Game_Event
   attr_accessor :move_type
@@ -159,7 +156,7 @@ def pbOnStepTaken(eventTriggered)
         event.move_speed = VisibleEncounterSettings::AGG_ENC_SWITCH_MOVEMENT[0] if VisibleEncounterSettings::AGG_ENC_SWITCH_MOVEMENT[0]
         event.move_frequency = VisibleEncounterSettings::AGG_ENC_SWITCH_MOVEMENT[1] if VisibleEncounterSettings::AGG_ENC_SWITCH_MOVEMENT[1]
         event.move_type = VisibleEncounterSettings::AGG_ENC_SWITCH_MOVEMENT[2] if VisibleEncounterSettings::AGG_ENC_SWITCH_MOVEMENT[2]
-        $scene.spriteset.addUserAnimation(VisibleEncounterSettings::AGG_ANIMATIONS[0],event.x,event.y,true,1)
+        $scene.spriteset.addUserAnimation(VisibleEncounterSettings::AGG_ANIMATIONS[0],event.x,event.y,true,1) if VisibleEncounterSettings::AGG_ANIMATIONS[0] != nil
         event.pokemon.chasing = true 
       end
     end
