@@ -118,7 +118,7 @@
 #===============================================================================
 
 # NEW FEATURES FROM VERSION 20.0.0.3 FOR PEv20:
-#  - removed bug concerning battling water encounters from shore
+#  - removed bug concerning battling water encounters from shore in PEv20
 # NEW FEATURES FROM VERSION 20.0.0.2 FOR PEv20:
 #  - removed bug concerning renaming $MapFactory in PEv20
 # NEW FEATURES FROM VERSION 20.0.0.1 FOR PEv20:
