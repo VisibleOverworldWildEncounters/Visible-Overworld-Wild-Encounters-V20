@@ -1,13 +1,11 @@
-
-
-  #====================================================================#
+ #====================================================================#
   #                                                                    #
-  #     Visible Overworld Wild Encounters V20.0.0.2 for PEv20          #
+  #     Visible Overworld Wild Encounters V20.0.0.3 for PEv20          #
   #                         - by derFischae (Credits if used please)   #
   #                                                                    #
   #====================================================================#
 
-# This script is for Pokémon Essentials v20 (for short PEv20). UPDATED TO VERSION 20.0.0.2.
+# This script is for Pokémon Essentials v20 (for short PEv20). UPDATED TO VERSION 20.0.0.3.
 
 # As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters
 # pop up on the overworld, they move around and you can start the battle with
@@ -119,9 +117,11 @@
 #             CHANGELOG
 #===============================================================================
 
-# NEW FEATURES FROM VERSION 20.0.0.1 FOR PEv19:
+# NEW FEATURES FROM VERSION 20.0.0.3 FOR PEv20:
+#  - removed bug concerning battling water encounters from shore
+# NEW FEATURES FROM VERSION 20.0.0.2 FOR PEv20:
 #  - removed bug concerning renaming $MapFactory in PEv20
-# NEW FEATURES FROM VERSION 20.0.0.1 FOR PEv19:
+# NEW FEATURES FROM VERSION 20.0.0.1 FOR PEv20:
 #  - updated version 19.1.0.4 to make it compatible with PEv20
 # NEW FEATURES FROM VERSION 19.1.0.4 FOR PEv19:
 #  - rearranged aggressive encounters as an Add On
@@ -262,7 +262,7 @@ module VisibleEncounterSettings
   # nil  - means that the movement-parameter will not be changed.
 
   #--------------- BATTLING SPAWNED POKEMON ------------------
-  BATTLE_WATER_FROM_GROUND = true #default true
+  BATTLE_WATER_FROM_SHORE = false #default true
   # this is used if you want to battle water pokemon without surfing
   # (default is true but I think is better in false)
   #false - means the battle wont start if not surfing 
@@ -633,7 +633,7 @@ class Game_Map
     #  - add a branch to check if player can battle water pokemon from ground
     Compiler::push_branch(event.pages[0].list,sprintf(" pbCheckBattleAllowed()"))
     #  - set $PokemonGlobal.battlingSpawnedPokemon = true
-    Compiler::push_script(event.pages[0].list,sprintf(" $PokemonGlobal.battlingSpawnedPokemon = true",1))    
+    Compiler::push_script(event.pages[0].list,sprintf(" $PokemonGlobal.battlingSpawnedPokemon = true"),1)    
     #  - add method pbSingleOrDoubleWildBattle for the battle
     if !$map_factory
       parameter = " pbSingleOrDoubleWildBattle( $game_map.events[#{key_id}].map.map_id, $game_map.events[#{key_id}].x, $game_map.events[#{key_id}].y, $game_map.events[#{key_id}].pokemon )"
@@ -644,11 +644,9 @@ class Game_Map
     Compiler::push_script(event.pages[0].list,sprintf(parameter),1)
     #   - set $PokemonGlobal.battlingSpawnedPokemon = false
     Compiler::push_script(event.pages[0].list,sprintf(" $PokemonGlobal.battlingSpawnedPokemon = false"),1) 
-    #  - add the end of branch
-    Compiler::push_branch_end(event.pages[0].list,1)
     #  - add a method to reset temporary data to previous state, must include
     #    $PokemonGlobal.roamEncounter, $game_temp.roamer_index_for_encounter, $PokemonGlobal.nextBattleBGM, $game_temp.force_single_battle, $game_temp.encounter_type
-    Compiler::push_script(event.pages[0].list,sprintf(" pbResetTempAfterBattle()"))
+    Compiler::push_script(event.pages[0].list,sprintf(" pbResetTempAfterBattle()"),1)
     #  - add method to remove this PokeEvent from map
     if !$map_factory
       parameter = "$game_map.removeThisEventfromMap(#{key_id})"
@@ -657,6 +655,11 @@ class Game_Map
       parameter = "$map_factory.getMap("+mapId.to_s+").removeThisEventfromMap(#{key_id})"
     end
     Compiler::push_script(event.pages[0].list,sprintf(parameter),1)
+    #  - add the end of branch
+    Compiler::push_branch_end(event.pages[0].list,1)
+    #  - add a method to reset temporary data to previous state (if tried to battle waterpokemon from shore but not allowed), must include
+    #    $PokemonGlobal.roamEncounter, $game_temp.roamer_index_for_encounter, $PokemonGlobal.nextBattleBGM, $game_temp.force_single_battle, $game_temp.encounter_type
+    Compiler::push_script(event.pages[0].list,sprintf(" pbResetTempAfterBattle()"))
     #  - finally push end command
     Compiler::push_end(event.pages[0].list)
     #--- creating and adding the Game_PokeEvent ------------------------------------
@@ -730,7 +733,7 @@ end
 def pbCheckBattleAllowed()
   encType = GameData::EncounterType.try_get($game_temp.encounter_type)
   #the pokemon encounter battle won't happen if it is in the water and the player is not surfing
-  return false if !$PokemonGlobal.surfing && encType.type == :water && !VisibleEncounterSettings::BATTLE_WATER_FROM_GROUND
+  return false if !$PokemonGlobal.surfing && encType.type == :water && VisibleEncounterSettings::BATTLE_WATER_FROM_SHORE == false
   return true
 end
 
