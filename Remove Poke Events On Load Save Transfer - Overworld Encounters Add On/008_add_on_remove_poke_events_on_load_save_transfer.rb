@@ -30,6 +30,8 @@ def pbRemovePokeEvents
         end
       end
     end
+  else 
+    pbRemovePokeEventsInMap
   end
 end
 
