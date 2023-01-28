@@ -31,8 +31,12 @@
 module VisibleEncounterSettings
   #------------- ADDITIONAL ANIMATIONS DURING SPAWNING ETC ------------
   # Create your own animations in database, then and edit the number ids 
-  DEFAULT_RUSTLE_ANIMATION_ID = Settings::RUSTLE_NORMAL_ANIMATION_ID # default Settings::RUSTLE_NORMAL_ANIMATION_ID
+  DEFAULT_SPAWN_ANIMATION_ID = Settings::RUSTLE_NORMAL_ANIMATION_ID # default Settings::RUSTLE_NORMAL_ANIMATION_ID
   # This parameter stores the id of the default animation that triggers when a new pokemon spawns on the overworld.
+  # Usually it is the normal grass rustle animation. But you can create your own animation in database and place in its id here.
+
+  DEFAULT_DESPAWN_ANIMATION_ID = Settings::RUSTLE_NORMAL_ANIMATION_ID # default Settings::RUSTLE_NORMAL_ANIMATION_ID
+  # This parameter stores the id of the default animation that triggers when a new pokemon despawns from the overworld.
   # Usually it is the normal grass rustle animation. But you can create your own animation in database and place in its id here.
   
   ENV_SPAWN_ANIMATIONS = [                          # default
@@ -63,6 +67,8 @@ module VisibleEncounterSettings
   # of the variable of that Game_PokeEvent.
 end
 
+
+
 #-------------------------------------------------------------------------------
 # overwriting pbPlaceEncounter to add animations while spawning to the overworld
 #-------------------------------------------------------------------------------
@@ -71,8 +77,8 @@ def pbPlaceEncounter(x,y,pokemon)
   #Appear Animation
   encType = GameData::EncounterType.try_get($game_temp.encounter_type)
   if !encType
-    # Show default animation
-    $scene.spriteset.addUserAnimation(VisibleEncounterSettings::DEFAULT_RUSTLE_ANIMATION_ID,x,y,true,1)
+    # Show default spawn animation
+    $scene.spriteset.addUserAnimation(VisibleEncounterSettings::DEFAULT_SPAWN_ANIMATION_ID,x,y,true,1)
   else
     default_anim = true
     for anim in VisibleEncounterSettings::ENV_SPAWN_ANIMATIONS
@@ -86,7 +92,7 @@ def pbPlaceEncounter(x,y,pokemon)
     end
     if default_anim == true
       # Show default grass rustling animation
-      $scene.spriteset.addUserAnimation(VisibleEncounterSettings::DEFAULT_RUSTLE_ANIMATION_ID,x,y,true,1)
+      $scene.spriteset.addUserAnimation(VisibleEncounterSettings::DEFAULT_SPAWN_ANIMATION_ID,x,y,true,1)
     end
   end
   #Appear Encounter Animations
@@ -137,4 +143,58 @@ class Game_PokeEvent < Game_Event
     end
     anim_update
   end
+end
+
+#-------------------------------------------------------------------------------
+# overwriting removeThisEventfromMap in Game_Map to add animations while despawning
+#-------------------------------------------------------------------------------
+class Game_Map
+
+  alias original_removeThisEventfromMap removeThisEventfromMap
+  def removeThisEventfromMap(id)
+    if @events.has_key?(id)
+      x = @events[id].x
+      y = @events[id].y
+      # Show default spawn animation
+      $scene.spriteset.addUserAnimation(VisibleEncounterSettings::DEFAULT_DESPAWN_ANIMATION_ID,x,y,true,1)
+    end
+    original_removeThisEventfromMap(id)
+  end
+end
+
+class Game_PokeEvent < Game_Event
+  #-------------------------------------------------------------------------------
+  # adding attr_reader for oldX and oldY to find last position of overworld pokemon
+  #-------------------------------------------------------------------------------
+  attr_reader :oldX
+  attr_reader :oldY
+  
+  #-------------------------------------------------------------------------------
+  # overwriting removeThisEventfromMap in Game_PokeEvent to add animations while despawning
+  #-------------------------------------------------------------------------------
+  alias original_removeThisEventfromMap removeThisEventfromMap
+  def removeThisEventfromMap
+      if $game_map.events.has_key?(@id) and $game_map.events[@id]==self
+          x = $game_map.events[@id].oldX
+          y = $game_map.events[@id].oldY
+          # Show default spawn animation
+          $scene.spriteset.addUserAnimation(VisibleEncounterSettings::DEFAULT_DESPAWN_ANIMATION_ID,x,y,true,1)
+      else
+          if $map_factory
+              for map in $map_factory.maps
+                  if map.events.has_key?(@id) and map.events[@id]==self
+                      x = map.events[@id].x
+                      y = map.events[@id].y
+                      # Show default spawn animation
+                      $scene.spriteset.addUserAnimation(VisibleEncounterSettings::DEFAULT_DESPAWN_ANIMATION_ID,x,y,true,1)                        
+                      break
+                  end
+              end
+          else
+              raise ArgumentError.new(_INTL("Actually, this should not be possible"))
+          end
+      end
+      original_removeThisEventfromMap
+  end
+
 end
