@@ -183,8 +183,8 @@ class Game_PokeEvent < Game_Event
           if $map_factory
               for map in $map_factory.maps
                   if map.events.has_key?(@id) and map.events[@id]==self
-                      x = map.events[@id].x
-                      y = map.events[@id].y
+                      x = map.events[@id].oldX
+                      y = map.events[@id].oldY
                       # Show default spawn animation
                       $scene.spriteset.addUserAnimation(VisibleEncounterSettings::DEFAULT_DESPAWN_ANIMATION_ID,x,y,true,1)                        
                       break
