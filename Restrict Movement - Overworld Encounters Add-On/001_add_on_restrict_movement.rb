@@ -6,6 +6,7 @@
 # It restricts the movement of spawned pokemon to there spawning terrain.
 # I.e. grass encounters stay on grass and will move around grass field but not come out of the grass.
 # The same holds for all other terrains, such as sand, mud, or whatever else you added to your project.
+# NOTE THAT pokemon will be trapped on isolated tiles (for instance a single grass tile). So please make sure that your maps do not contain such traps.
 
 
 # FEATURES INCLUDED:
