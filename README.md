@@ -1,6 +1,6 @@
 # Visible-Overworld-Wild-Encounters
 
-* Visible Overworld Wild Encounters Version 20.0.0.2 for PEv20 - by derFischae (Credits if used please)
+* Visible Overworld Wild Encounters Version 20.0.0.3 for PEv20 - by derFischae (Credits if used please)
 
 This script is for Pokémon Essentials v20 and v20.1 (for short PEv20). UPDATED TO VERSION 20.0.0.2 FOR PEv20.
 
