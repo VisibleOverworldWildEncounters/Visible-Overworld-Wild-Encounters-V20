@@ -120,6 +120,8 @@
 #             CHANGELOG
 #===============================================================================
 
+# NEW FEATURES FROM VERSION 20.0.0.4 FOR PEv20:
+# - new add on to restrict movement of spawned pokemon to there starting terrain. I.e. grass encounters stay on grass.
 # NEW FEATURES FROM VERSION 20.0.0.3 FOR PEv20:
 #  - removed bug concerning battling water encounters from shore in PEv20
 # NEW FEATURES FROM VERSION 20.0.0.2 FOR PEv20:
