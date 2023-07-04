@@ -1,6 +1,6 @@
 # Visible-Overworld-Wild-Encounters
 
-* Visible Overworld Wild Encounters Version 20.0.0.3 for PEv20 - by derFischae (Credits if used please)
+* Visible Overworld Wild Encounters Version 20.0.0.4 for PEv20 - by derFischae (Credits if used please)
 
 This script is for Pokémon Essentials v20 and v20.1 (for short PEv20). UPDATED TO VERSION 20.0.0.2 FOR PEv20.
 
@@ -64,9 +64,12 @@ If you need help, found a bug or search for more modifications then go to https:
   - stabilizes the probability of spawning on maps with low grass by choosing another tile if the previous random chosen one does not allow spawning  
   - set the maximal number of tiles chosen for spawning in parameter NO_OF_CHOSEN_TILES
   - be careful, it might produce lag with other scripts
+- Restrict Movement Add-On
+  - Overworld spawned Grass/Water/Sand/etc encounters move only on Grass/Water/Sand tiles and not leave there terrain
+  - You can activate and deactivate the restriction by setting the parameter RESTRICT_MOVEMENT in the settings section of this add-on
 - Max Spawn Add-On
-  - Define a maximal limit of spawned pokemon on the overworld at the same time.
-  - After reaching that limit MAX_SPAWN no pokemon will spawn until another pokemon despawned.
+  - Define a maximal limit of spawned pokemon on the overworld at the same time
+  - After reaching that limit MAX_SPAWN no pokemon will spawn until another pokemon despawned
 - Additional Despawn Methods Add-On
   - Choose to remove PokeEvent distanced on screen from the player with REMOVE_DISTANCED
   - The distance (steps) is edited in DISTANCE_VANISH and DISTANCE_VANISH_SHINY
