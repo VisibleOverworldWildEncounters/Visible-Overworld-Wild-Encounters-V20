@@ -101,6 +101,9 @@ If you need help, found a bug or search for more modifications then go to https:
   - You need to put a graphic, named "ghost.png", in your "/Graphics/Characters/" folder of your project. This graphic is not provided here, but maybe you can easily find some resource, for example search for "shiny missingNo [Ghost Form]".
 
 ### CHANGELOG
+NEW FEATURES FROM VERSION 20.0.0.4 FOR PEv20:
+ - new add on to restrict movement of spawned pokemon to there starting terrain. I.e. grass encounters stay on grass.
+
 NEW FEATURES FROM VERSION 20.0.0.3 FOR PEv20:
  - removed bug concerning battling water encounters from shore in PEv20
 
