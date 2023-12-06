@@ -38,8 +38,8 @@ def pbSpawnOnStepTaken(repel_active)
 
   currentRegion = pbGetCurrentRegion
   currentMapName = $game_map.name
-  if MAP_MAX_SPAWN && MAP_MAX_SPAWN.length > 0 do
-    for map_limit in MAP_MAX_SPAWN do
+  if VisibleEncounterSettings::MAP_MAX_SPAWN && VisibleEncounterSettings::MAP_MAX_SPAWN.length > 0
+    for map_limit in VisibleEncounterSettings::MAP_MAX_SPAWN do
       map_id = map_limit[0]
 
       if map_id != $game_map.map_id
