@@ -1,11 +1,11 @@
  #====================================================================#
   #                                                                    #
-  #     Visible Overworld Wild Encounters V20.0.0.4 for PEv20          #
+  #   Visible Overworld Wild Encounters V20.0.0.4 for PEv20 and PEv21  #
   #                         - by derFischae (Credits if used please)   #
   #                                                                    #
   #====================================================================#
 
-# This script is for Pokémon Essentials v20 (for short PEv20). UPDATED TO VERSION 20.0.0.4.
+# This script is for Pokémon Essentials v20, v20.1, v21 and v21.1 (for short PEv20 and PEv21). UPDATED TO VERSION 20.0.0.4.
 
 # As in Pokemon Let's go Pikachu/Eevee or Pokemon Shield and Sword wild encounters
 # pop up on the overworld, they move around and you can start the battle with
@@ -105,7 +105,7 @@
 #    female form    - SPECIES_female.png or SPECIES_n_female (e.g. PIDGEY_female.png or PIKACHU_3_female.png)
 # [2] Add Script: Follow this link https://github.com/VisibleOverworldWildEncounters/V20 and copy the folder "Visible Overworld Wild Encounters - Script" to your "/plugins/" folder.
 # [3] [optional] Change Settings: Open the script file in the folder and change the parameters in the settings section therein as you like. Details descriptions about the parameters can be found there as well. 
-# [4] [optional] Install Add-Ons (the folders under "/optional/" in the github repository): There are a lot of Add-Ons and parameter settings for your personal optimal solution. So, Copy Add-Ons in your "/plugins/" folder and edit parameters in settings of that Add-Ons to your liking. Some Add-On and parameter combinations can produce lag, e.g. a high spawning rate without a spawning cap, or e.g. "NO_OF_CHOSEN_TILES=0" (or too high) when having other scripts like Pokemon Following. Some add-Ons are incompatible to each other and some add-ons require external plugins. So, do not simply include all folders.
+# [4] [optional] Install Add-Ons (the folders under "/optional/" in the github repository): There are a lot of Add-Ons and parameter settings for your personal optimal solution. So, Copy Add-Ons in your "/plugins/" folder and edit parameters in settings of that Add-Ons to your liking. Some Add-Ons are incompatible to each other and some Add-On and parameter combinations can produce lag, e.g. a high spawning rate without a spawning cap, or e.g. "NO_OF_CHOSEN_TILES=0" (or too high) when having other scripts like Pokemon Following. So, do not simply include all folders.
 # [5] Enjoy!
 
 #===============================================================================
