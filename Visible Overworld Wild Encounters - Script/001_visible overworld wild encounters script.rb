@@ -87,7 +87,7 @@
 #    [*] Remove overworld encounters on load/save and on map transfer
 #  [*] Overworld Lavender Town Ghosts Add-On
 #    [*] Shows ghost sprite for overworld encounters
-#    [*] requires Lavender Town Ghosts Plugin 
+#    [*] full functionality when using additionally the original Lavender Town Ghosts Plugin https://www.pokecommunity.com/threads/lavender-town-ghosts-v18-1.441236/
 #    [*] You need to put a graphic, named "ghost.png", in your "/Graphisc/Characters/" folder of your project. This graphic is not provided here, but maybe you can easily find some resource, for example search for "shiny missingNo [Ghost Form]".
 
 
