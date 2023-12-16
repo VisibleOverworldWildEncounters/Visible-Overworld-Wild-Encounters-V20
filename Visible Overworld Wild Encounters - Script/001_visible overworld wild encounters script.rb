@@ -7,7 +7,7 @@
 
 # This script is for Pokémon Essentials v20 (for short PEv20). UPDATED TO VERSION 20.0.0.4.
 
-# As in Pokemon Let's go Pikachu/Eevee or Pokemon Shild and Sword wild encounters
+# As in Pokemon Let's go Pikachu/Eevee or Pokemon Shield and Sword wild encounters
 # pop up on the overworld, they move around and you can start the battle with
 # them simply by moving to the pokemon. Clearly, you also can omit the battle
 # by circling around them.
