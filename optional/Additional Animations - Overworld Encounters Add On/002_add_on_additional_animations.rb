@@ -86,7 +86,7 @@ module VisibleEncounterSettings
     encType = GameData::EncounterType.try_get($game_temp.encounter_type)
     if !encType
       # Show default spawn animation
-      $scene.spriteset.addUserAnimation(VisibleEncounterSettings::DEFAULT_SPAWN_ANIMATION_ID,x,y,true,1)
+      $scene.spriteset.addUserAnimation(VisibleEncounterSettings::DEFAULT_SPAWN_ANIMATION_ID,x,y,true,1) if $scene.is_a?(Scene_Map)
     else
       default_anim = true
       for anim in VisibleEncounterSettings::ENV_SPAWN_ANIMATIONS
@@ -94,13 +94,13 @@ module VisibleEncounterSettings
         anim_id = anim[1]
         if encType.type  == anim_type && $data_animations[anim_id]
           # Show animation
-          $scene.spriteset.addUserAnimation(anim_id,x,y,true,1)
+          $scene.spriteset.addUserAnimation(anim_id,x,y,true,1) if $scene.is_a?(Scene_Map)
           default_anim = false
         end
       end
       if default_anim == true
         # Show default grass rustling animation
-        $scene.spriteset.addUserAnimation(VisibleEncounterSettings::DEFAULT_SPAWN_ANIMATION_ID,x,y,true,1)
+        $scene.spriteset.addUserAnimation(VisibleEncounterSettings::DEFAULT_SPAWN_ANIMATION_ID,x,y,true,1) if $scene.is_a?(Scene_Map)
       end
     end
     #Appear Encounter Animations
@@ -109,7 +109,7 @@ module VisibleEncounterSettings
       anim_value = anim[1]
       anim_id = anim[2]
       if pokemon.method(anim_method).call == anim_value && $data_animations[anim_id]
-        $scene.spriteset.addUserAnimation(anim_id,x,y,true,1)
+        $scene.spriteset.addUserAnimation(anim_id,x,y,true,1) if $scene.is_a?(Scene_Map)
       end
     end
     original_pbPlaceEncounter(x,y,pokemon)
@@ -140,9 +140,9 @@ module VisibleEncounterSettings
                   sy = self.screen_y - $game_player.screen_y
                   newx = $game_player.x + (sx/32)
                   newy = $game_player.y + (sy/32)
-                  $scene.spriteset.addUserAnimation(anim_id,newx,newy,true,1)
+                  $scene.spriteset.addUserAnimation(anim_id,newx,newy,true,1) if $scene.is_a?(Scene_Map)
                 else #same map
-                  $scene.spriteset.addUserAnimation(anim_id,x,y,true,1)
+                  $scene.spriteset.addUserAnimation(anim_id,x,y,true,1) if $scene.is_a?(Scene_Map)
                 end
               end
             end
@@ -169,13 +169,13 @@ module VisibleEncounterSettings
             anim_tag_id = anim[0]
             anim_id = anim[1]
             if tile_terrain_tag.id == anim_tag_id && $data_animations[anim_id]
-                $scene.spriteset.addUserAnimation(anim_id,x,y,true,1)
+                $scene.spriteset.addUserAnimation(anim_id,x,y,true,1) if $scene.is_a?(Scene_Map)
                 default_anim = false
             end
         end
         if default_anim == true
             # Show default despawn animation
-            $scene.spriteset.addUserAnimation(VisibleEncounterSettings::DEFAULT_DESPAWN_ANIMATION_ID,x,y,true,1)
+            $scene.spriteset.addUserAnimation(VisibleEncounterSettings::DEFAULT_DESPAWN_ANIMATION_ID,x,y,true,1) if $scene.is_a?(Scene_Map)
         end
       end
       original_removeThisEventfromMap(id)
@@ -203,13 +203,13 @@ module VisibleEncounterSettings
                 anim_tag_id = anim[0]
                 anim_id = anim[1]
                 if tile_terrain_tag.id == anim_tag_id && $data_animations[anim_id]
-                    $scene.spriteset.addUserAnimation(anim_id,x,y,true,1)
+                    $scene.spriteset.addUserAnimation(anim_id,x,y,true,1) if $scene.is_a?(Scene_Map)
                     default_anim = false
                 end
             end
             if default_anim == true
                 # Show default despawn animation
-                $scene.spriteset.addUserAnimation(VisibleEncounterSettings::DEFAULT_DESPAWN_ANIMATION_ID,x,y,true,1)
+                $scene.spriteset.addUserAnimation(VisibleEncounterSettings::DEFAULT_DESPAWN_ANIMATION_ID,x,y,true,1) if $scene.is_a?(Scene_Map)
             end
         else
             if $map_factory
@@ -223,13 +223,13 @@ module VisibleEncounterSettings
                             anim_tag_id = anim[0]
                             anim_id = anim[1]
                             if tile_terrain_tag.id == anim_tag_id && $data_animations[anim_id]
-                                $scene.spriteset.addUserAnimation(anim_id,x,y,true,1)
+                                $scene.spriteset.addUserAnimation(anim_id,x,y,true,1) if $scene.is_a?(Scene_Map)
                                 default_anim = false
                             end
                         end
                         if default_anim == true
                             # Show default despawn animation
-                            $scene.spriteset.addUserAnimation(VisibleEncounterSettings::DEFAULT_DESPAWN_ANIMATION_ID,x,y,true,1)
+                            $scene.spriteset.addUserAnimation(VisibleEncounterSettings::DEFAULT_DESPAWN_ANIMATION_ID,x,y,true,1) if $scene.is_a?(Scene_Map)
                         end
                         break
                     end
