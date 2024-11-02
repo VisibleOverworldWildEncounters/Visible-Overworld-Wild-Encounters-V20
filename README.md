@@ -1,6 +1,6 @@
 # Visible-Overworld-Wild-Encounters
 
-* Visible Overworld Wild Encounters Version 20.0.0.4 for PEv20 and PEv21 - by derFischae (Credits if used please)
+* Visible Overworld Wild Encounters Version 20.0.0.5 for PEv20 and PEv21 - by derFischae (Credits if used please)
 
 This script is for Pokémon Essentials v20, v20.1, v20 and v20.1 (for short PEv20 and PEv21). UPDATED TO VERSION 20.0.0.4.
 
@@ -28,6 +28,9 @@ Installation as simple as it can be.
     usual form     - SPECIES.png   where SPECIES is the species name in capslock (e.g. PIDGEY.png)
     alternate form - SPECIES_n.png where n is the number of the form (e.g. PIKACHU_3.png)
     female form    - SPECIES_female.png or SPECIES_n_female (e.g. PIDGEY_female.png or PIKACHU_3_female.png)
+  [optional] Add Graphics for Swimming Pokemon: Either get the resource Overworld Swimming Sprites https://eeveeexpo.com/resources/1400/
+  and place its unzipped folders in the "Graphics/Characters" folder of your game file system.
+  Or you place your own sprites for swimming pokemon/fakemon with the right names in your "\Graphics\Characters\Swimming" folder and your shiny sprites in your "\Graphics\Characters\Swimming shiny" folder.
 2. Add Script: Follow this link https://github.com/VisibleOverworldWildEncounters/V20 and copy the folder "Visible Overworld Wild Encounters - Script" to your "/plugins/" folder.
 3. [optional] Change Settings: Open the script file in the folder and change the parameters in the settings section therein as you like. Details descriptions about the parameters can be found there as well. 
 4. [optional] Install Add-Ons (the folders under "/optional/" in the github repository): There are a lot of Add-Ons and parameter settings for your personal optimal solution. So, Copy Add-Ons in your "/plugins/" folder and edit parameters in settings of that Add-Ons to your liking. Some Add-Ons are incompatible to each other and some Add-On and parameter combinations can produce lag, e.g. a high spawning rate without a spawning cap, or e.g. "NO_OF_CHOSEN_TILES=0" (or too high) when having other scripts like Pokemon Following. So, do not simply include all folders.
@@ -101,6 +104,9 @@ If you need help, found a bug or search for more modifications then go to https:
   - You need to put a graphic, named "ghost.png", in your "/Graphics/Characters/" folder of your project. This graphic is not provided here, but maybe you can easily find some resource, for example search for "shiny missingNo [Ghost Form]".
 
 ### CHANGELOG
+NEW FEATURES FROM VERSION 20.0.0.5 FOR PEv20:
+ - added feature that spawned pokemon can have swimming sprites now
+
 NEW FEATURES FROM VERSION 20.0.0.4 FOR PEv20:
  - new add on to restrict movement of spawned pokemon to there starting terrain. I.e. grass encounters stay on grass.
 
