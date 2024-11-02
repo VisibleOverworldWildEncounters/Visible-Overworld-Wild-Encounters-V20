@@ -38,8 +38,8 @@ end
 # Overwriting method ow_sprite_filename to include overworld ghost sprite
 #-------------------------------------------------------------------------------
 alias ghost_ow_sprite_filename ow_sprite_filename
-def ow_sprite_filename(species, form = 0, gender = 0, shiny = false, shadow = false)
+def ow_sprite_filename(x, y, species, form = 0, gender = 0, shiny = false, shadow = false)
     return "Graphics/Characters/ghost" if Ghost.active?
-    return ghost_ow_sprite_filename(species, form, gender, shiny, shadow)
+    return ghost_ow_sprite_filename(x, y, species, form, gender, shiny, shadow)
 end
     
