@@ -24,7 +24,7 @@ Installation as simple as it can be.
 1. Add Graphics: Either get the resources from Gen 8 Project https://reliccastle.com/resources/670/
   and install the "Graphics/Characters" folder in your game file system.
   Or you place your own sprites for your pokemon/fakemon with the right names in your "\Graphics\Characters\Follower" folder and your shiny sprites in your "\Graphics\Characters\Follower shiny" folder. 
-  The right name of sprites is:
+  The right name of sprites is: \\
     usual form     - SPECIES.png   where SPECIES is the species name in capslock (e.g. PIDGEY.png)
     alternate form - SPECIES_n.png where n is the number of the form (e.g. PIKACHU_3.png)
     female form    - SPECIES_female.png or SPECIES_n_female (e.g. PIDGEY_female.png or PIKACHU_3_female.png)
