@@ -40,22 +40,22 @@ end
 # Overwriting method ow_sprite_filename to include ditto transform 
 #-------------------------------------------------------------------------------
 alias ditto_ow_sprite_filename ow_sprite_filename
-def ow_sprite_filename(species, form = 0, gender = 0, shiny = false, shadow = false)
+def ow_sprite_filename(x, y, species, form = 0, gender = 0, shiny = false, shadow = false)
   for transform in VisibleEncounterSettings::TRANSFORMS
     next if transform[0] != species.to_sym
     if transform.size == 1
       encounter = $PokemonEncounters.choose_wild_pokemon($game_temp.encounter_type)
-      return ditto_ow_sprite_filename(encounter[0].to_s, form, gender, shiny, shadow)
+      return ditto_ow_sprite_filename(x, y, encounter[0].to_s, form, gender, shiny, shadow)
     elsif transform.size == 2 && !transform[1]
       keys = GameData::Species.keys
       k = rand(keys.size)
       species = keys[k]
-      return ditto_ow_sprite_filename(species, form, gender, shiny, shadow)
+      return ditto_ow_sprite_filename(x, y, species, form, gender, shiny, shadow)
     else
       k = rand(transform.size-1)
       species = transform[k+1]
-      return ditto_ow_sprite_filename(species, form, gender, shiny, shadow)
+      return ditto_ow_sprite_filename(x, y, species, form, gender, shiny, shadow)
     end
   end
-  return ditto_ow_sprite_filename(species, form, gender, shiny, shadow)
+  return ditto_ow_sprite_filename(x, y, species, form, gender, shiny, shadow)
 end
