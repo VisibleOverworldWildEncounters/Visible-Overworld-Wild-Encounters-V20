@@ -123,8 +123,10 @@
 #             CHANGELOG
 #===============================================================================
 
+# NEW FEATURES FROM VERSION 20.0.0.5 FOR PEv20:
+# - added feature that spawned pokemon can have swimming sprites now
 # NEW FEATURES FROM VERSION 20.0.0.4 FOR PEv20:
-# - new add on to restrict movement of spawned pokemon to there starting terrain. I.e. grass encounters stay on grass.
+# - new addon to restrict movement of spawned pokemon to there starting terrain. I.e. grass encounters stay on grass.
 # NEW FEATURES FROM VERSION 20.0.0.3 FOR PEv20:
 #  - removed bug concerning battling water encounters from shore in PEv20
 # NEW FEATURES FROM VERSION 20.0.0.2 FOR PEv20:
@@ -595,7 +597,7 @@ class Game_Map
     graphic_form = (VisibleEncounterSettings::SPRITES[0] && form!=nil) ? form : 0
     graphic_gender = (VisibleEncounterSettings::SPRITES[1] && gender!=nil) ? gender : 0
     graphic_shiny = (VisibleEncounterSettings::SPRITES[2] && shiny!=nil) ? shiny : false
-    fname = ow_sprite_filename(encounter[0].to_s, graphic_form, graphic_gender, graphic_shiny)
+    fname = ow_sprite_filename(x, y, encounter[0].to_s, graphic_form, graphic_gender, graphic_shiny)
     fname.gsub!("Graphics/Characters/","")
 
     event.pages[0].graphic.character_name = fname
@@ -698,8 +700,14 @@ end
 #-------------------------------------------------------------------------------
 # New method for easily get the appropriate Pokemon Graphic
 #-------------------------------------------------------------------------------
-def ow_sprite_filename(species, form = 0, gender = 0, shiny = false, shadow = false)
-  fname = GameData::Species.check_graphic_file("Graphics/Characters/", species, form, gender, shiny, shadow, "Followers")
+def ow_sprite_filename(x, y, species, form = 0, gender = 0, shiny = false, shadow = false)
+  water_tile  = ($game_map.terrain_tag(x,y).can_surf_freely) ? true : false  
+  fname = nil
+  fname = GameData::Species.check_graphic_file("Graphics/Characters/", species, form, gender, shiny, shadow, "Swimming Shiny") if water_tile and shiny
+  fname = GameData::Species.check_graphic_file("Graphics/Characters/", species, form, gender, shiny, shadow, "Levitates Shiny") if water_tile and shiny and nil_or_empty?(fname)
+  fname = GameData::Species.check_graphic_file("Graphics/Characters/", species, form, gender, shiny, shadow, "Swimming") if water_tile and nil_or_empty?(fname)
+  fname = GameData::Species.check_graphic_file("Graphics/Characters/", species, form, gender, shiny, shadow, "Levitates") if water_tile and nil_or_empty?(fname)
+  fname = GameData::Species.check_graphic_file("Graphics/Characters/", species, form, gender, shiny, shadow, "Followers") if nil_or_empty?(fname)
   fname = "Graphics/Characters/Followers/000.png" if nil_or_empty?(fname)
   return fname
 end
