@@ -24,17 +24,18 @@ Installation as simple as it can be.
 1. Add Graphics: Either get the resources from Gen 8 Project https://reliccastle.com/resources/670/
   and install the "Graphics/Characters" folder in your game file system.
   Or you place your own sprites for your pokemon/fakemon with the right names in your "\Graphics\Characters\Follower" folder and your shiny sprites in your "\Graphics\Characters\Follower shiny" folder. 
-  The right name of sprites is: \\
+  The right name of sprites is:
+
     usual form     - SPECIES.png   where SPECIES is the species name in capslock (e.g. PIDGEY.png)
     alternate form - SPECIES_n.png where n is the number of the form (e.g. PIKACHU_3.png)
     female form    - SPECIES_female.png or SPECIES_n_female (e.g. PIDGEY_female.png or PIKACHU_3_female.png)
   [optional] Add Graphics for Swimming Pokemon: Either get the resource Overworld Swimming Sprites https://eeveeexpo.com/resources/1400/
   and place its unzipped folders in the "Graphics/Characters" folder of your game file system.
   Or you place your own sprites for swimming pokemon/fakemon with the right names in your "\Graphics\Characters\Swimming" folder and your shiny sprites in your "\Graphics\Characters\Swimming shiny" folder.
-2. Add Script: Follow this link https://github.com/VisibleOverworldWildEncounters/V20 and copy the folder "Visible Overworld Wild Encounters - Script" to your "/plugins/" folder.
-3. [optional] Change Settings: Open the script file in the folder and change the parameters in the settings section therein as you like. Details descriptions about the parameters can be found there as well. 
-4. [optional] Install Add-Ons (the folders under "/optional/" in the github repository): There are a lot of Add-Ons and parameter settings for your personal optimal solution. So, Copy Add-Ons in your "/plugins/" folder and edit parameters in settings of that Add-Ons to your liking. Some Add-Ons are incompatible to each other and some Add-On and parameter combinations can produce lag, e.g. a high spawning rate without a spawning cap, or e.g. "NO_OF_CHOSEN_TILES=0" (or too high) when having other scripts like Pokemon Following. So, do not simply include all folders.
-5. Enjoy!
+3. Add Script: Follow this link https://github.com/VisibleOverworldWildEncounters/V20 and copy the folder "Visible Overworld Wild Encounters - Script" to your "/plugins/" folder.
+4. [optional] Change Settings: Open the script file in the folder and change the parameters in the settings section therein as you like. Details descriptions about the parameters can be found there as well. 
+5. [optional] Install Add-Ons (the folders under "/optional/" in the github repository): There are a lot of Add-Ons and parameter settings for your personal optimal solution. So, Copy Add-Ons in your "/plugins/" folder and edit parameters in settings of that Add-Ons to your liking. Some Add-Ons are incompatible to each other and some Add-On and parameter combinations can produce lag, e.g. a high spawning rate without a spawning cap, or e.g. "NO_OF_CHOSEN_TILES=0" (or too high) when having other scripts like Pokemon Following. So, do not simply include all folders.
+6. Enjoy!
 
 ### HELP AND MORE 
 If you need help, found a bug or search for more modifications then go to https://www.pokecommunity.com/showthread.php?t=429019
